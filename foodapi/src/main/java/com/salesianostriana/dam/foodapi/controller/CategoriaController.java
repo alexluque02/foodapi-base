@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.foodapi.controller;
 
-import com.salesianostriana.dam.foodapi.dto.EditCategoriaDto;
+import com.salesianostriana.dam.foodapi.dto.CategoriaDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.servicios.CategoriaServicio;
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,7 +43,7 @@ public class CategoriaController {
                     content = @Content),
     })
     @PostMapping("/")
-    public ResponseEntity<EditCategoriaDto> addCategoria(@RequestBody EditCategoriaDto nuevo){
+    public ResponseEntity<CategoriaDto> addCategoria(@RequestBody CategoriaDto nuevo){
 
         Categoria c = servicio.addCategoria(nuevo);
 
