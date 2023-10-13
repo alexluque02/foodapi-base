@@ -7,7 +7,7 @@ public record CategoriaDto(
         String nombre
 ) {
 
-    public CategoriaDto of (Categoria c){
+    public static CategoriaDto of(Categoria c){
         return new CategoriaDto(
                 c.getId(),
                 c.getNombre()

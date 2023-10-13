@@ -6,13 +6,15 @@ import com.salesianostriana.dam.foodapi.repos.CategoriaRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CategoriaServicio {
 
     private final CategoriaRepositorio repositorio;
 
-    public Categoria addCategoria(CategoriaDto nueva){
+    public Categoria add(CategoriaDto nueva){
         Categoria c= new Categoria();
 
         if(nueva != null) {//Preguntar si poniendo el id tiene que dar fallo o no
@@ -22,6 +24,10 @@ public class CategoriaServicio {
         return repositorio.save(c);
     }
 
+
+    public List<Categoria> findAll(){
+        return repositorio.findAll();
+    }
 
 
 }
