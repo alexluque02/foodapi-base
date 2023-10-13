@@ -17,7 +17,7 @@ public class CategoriaServicio {
     public Categoria addCategoria(EditCategoriaDto nueva){
         Categoria c= new Categoria();
 
-        if(nueva != null && nueva.id()==null) {//Cambiar sobre el id
+        if(nueva != null) {//Preguntar si poniendo el id tiene que dar fallo o no
             c.setNombre(nueva.nombre());
         }
 
