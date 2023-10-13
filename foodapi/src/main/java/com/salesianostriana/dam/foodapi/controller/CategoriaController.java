@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.foodapi.controller;
 
 import com.salesianostriana.dam.foodapi.dto.CategoriaDto;
+import com.salesianostriana.dam.foodapi.dto.FindCategoriaDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.servicios.CategoriaServicio;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,11 +13,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -82,6 +85,31 @@ public class CategoriaController {
                         .map(CategoriaDto::of)
                         .toList()
         );
+    }
+
+    @Operation(summary = "Buscar una categoría por su id y número de productos que tiene")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Se ha encontrado la categoría",
+                    content = { @Content(mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
+                            examples = {@ExampleObject(
+                                    value = """
+                                                    {"id": 1, "nombre": "Alex", "numProductos": 5},
+                                            """
+                            )}
+                    )}),
+            @ApiResponse(responseCode = "404",
+                    description = "No se ha encontrado ninguna categoría con ese id",
+                    content = @Content),
+    })
+    @GetMapping("/{id}")
+    public ResponseEntity<FindCategoriaDto> findByIdCategoria(@PathVariable Long id){
+        Optional<Categoria> categoria = servicio.findById(id);
+        return categoria.map(value -> ResponseEntity.ok(
+                FindCategoriaDto.of(value, servicio.countProductosByCategoria(value))
+        )).orElseGet(() -> ResponseEntity.notFound().build());
+
     }
 
 }

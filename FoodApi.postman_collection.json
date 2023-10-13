@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b702ce62-3a93-44cb-a125-fc9d79e061eb",
+		"_postman_id": "d3aa12f7-5b78-47b6-8d77-601405dbe8fc",
 		"name": "FoodApi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "30052609"
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Alex\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"Pepe\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -28,6 +28,42 @@
 					"path": [
 						"categoria",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All Categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/categoria/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"categoria",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id Categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/categoria/2",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"categoria",
+						"2"
 					]
 				}
 			},
