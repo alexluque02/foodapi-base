@@ -40,5 +40,16 @@ public class CategoriaServicio {
         return repositorioProducto.countProductosByCategoria(c);
     }
 
+    public Categoria edit(Long id, CategoriaDto editar){
+        Optional<Categoria> categoriaOptional = findById(id);
+
+        if (categoriaOptional.isPresent()) {
+            Categoria categoria = categoriaOptional.get();
+            categoria.setNombre(editar.nombre());
+            return repositorio.save(categoria);
+        }
+        return null;
+    }
+
 
 }
