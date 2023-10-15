@@ -110,4 +110,27 @@ public class CategoriaController {
 
     }
 
+    @Operation(summary = "Edita una categoría")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Se ha encontrado la categoría y se ha editado con éxito",
+                    content = { @Content(mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
+                            examples = {@ExampleObject(
+                                    value = " {'id': 1, 'nombre': 'Alex'}"
+                            )}
+                    )}),
+            @ApiResponse(responseCode = "404",
+                    description = "No se ha encontrado ninguna categoría con ese id",
+                    content = @Content),
+    })
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoriaDto> editCategoria(@PathVariable Long id, @RequestBody CategoriaDto editar){
+        Categoria c = servicio.edit(id, editar);
+        if (c != null) {
+            return ResponseEntity.ok(editar.of(c));
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 }
