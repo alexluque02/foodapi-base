@@ -40,7 +40,7 @@ public class CategoriaController {
                                     value = "{'id': 1, 'nombre': 'Alex'}"
                             )}
                     )}),
-            @ApiResponse(responseCode = "404",
+            @ApiResponse(responseCode = "400 Bad Request",
                     description = "No se ha agregado ninguna categoría",
                     content = @Content),
     })
