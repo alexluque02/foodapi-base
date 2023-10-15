@@ -133,4 +133,24 @@ public class CategoriaController {
         return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Borra una categoría")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204 No Content",
+                    description = "Se ha encontrado la categoría y se ha borrado con éxito",
+                    content = @Content),
+            @ApiResponse(responseCode = "400 Bad Request",
+                    description = "No se ha encontrado ninguna categoría con ese id",
+                    content = @Content),
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCategory(@PathVariable Long id){
+        Categoria c = servicio.delete(id);
+
+        if(c!=null){
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
 }

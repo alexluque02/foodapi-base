@@ -51,5 +51,16 @@ public class CategoriaServicio {
         return null;
     }
 
+    public Categoria delete(Long id){
+        Optional<Categoria> categoria = findById(id);
+        if(categoria.isPresent()){
+            repositorio.delete(categoria.get());
+            return categoria.get();
+        }
+
+        return null;
+
+    }
+
 
 }
