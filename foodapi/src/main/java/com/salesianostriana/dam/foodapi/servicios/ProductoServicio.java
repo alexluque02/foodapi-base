@@ -8,6 +8,8 @@ import com.salesianostriana.dam.foodapi.repos.ProductoRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 import java.util.List;
 
 @Service
@@ -17,16 +19,16 @@ public class ProductoServicio {
     private final ProductoRepositorio repositorio;
     private final CategoriaRepositorio categoriaRepositorio;
 
-    public Producto add(EditProductoDto nuevo){
+    public Producto add(EditProductoDto nuevo) {
         Producto p = new Producto();
-        if(nuevo!=null){
+        if (nuevo != null) {
             p.setNombre(nuevo.nombre());
             p.setImagen(nuevo.imagen());
             p.setPrecio(nuevo.precio());
             p.setDescripcion(nuevo.descripcion());
             p.setPrecioOferta(nuevo.precioOferta());
             p.setTags(nuevo.tags());
-            Long id=nuevo.categoria();
+            Long id = nuevo.categoria();
             if (categoriaRepositorio.findById(id).isPresent()) {
                 p.setCategoria(categoriaRepositorio.findById(id).get());
             } else {
@@ -36,7 +38,11 @@ public class ProductoServicio {
         return repositorio.save(p);
     }
 
-    public List<Producto> findAll(){
+    public Optional<Producto> findById(Long id) {
+        return repositorio.findById(id);
+    }
+
+    public List<Producto> findAll() {
         return repositorio.findAll();
     }
 
