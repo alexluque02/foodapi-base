@@ -8,7 +8,7 @@ import com.salesianostriana.dam.foodapi.dto.FindProductoDto;
 import com.salesianostriana.dam.foodapi.dto.ProductoDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
-import com.salesianostriana.dam.foodapi.modelo.ProductoView;
+import com.salesianostriana.dam.foodapi.modelo.ProductoView.*;
 import com.salesianostriana.dam.foodapi.servicios.ProductoServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -47,7 +47,7 @@ public class ProductoController {
             @ApiResponse(responseCode = "400 Bad Request", description = "No se ha agregado ningún producto", content = @Content),
     })
     @PostMapping("/")
-    @JsonView({ ProductoView.ProductoSinCategoria.class })
+    @JsonView({ ProductoSinCategoria.class })
     public ResponseEntity<ProductoDto> addProducto(@RequestBody EditProductoDto nuevo) {
         Producto p = servicio.add(nuevo);
         return ResponseEntity.status(HttpStatus.CREATED).body(ProductoDto.of(p));
@@ -149,7 +149,7 @@ public class ProductoController {
             @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto", content = @Content),
     })
     @GetMapping("/")
-    @JsonView({ ProductoView.ProductoCompleto.class })
+    @JsonView({ ProductoCompleto.class })
     public ResponseEntity<List<ProductoDto>> findAllProducto() {
         List<Producto> data = servicio.findAll();
 

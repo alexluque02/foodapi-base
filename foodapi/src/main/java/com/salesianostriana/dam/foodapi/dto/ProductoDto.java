@@ -2,26 +2,26 @@ package com.salesianostriana.dam.foodapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
-import com.salesianostriana.dam.foodapi.modelo.ProductoView;
+import com.salesianostriana.dam.foodapi.modelo.ProductoView.*;
 
 import java.util.List;
 
 public record ProductoDto(
-        @JsonView({ProductoView.ProductoSinCategoria.class})
+        @JsonView({ProductoSinCategoria.class})
         Long id,
-        @JsonView({ProductoView.ProductoSinCategoria.class})
+        @JsonView({ProductoSinCategoria.class})
         String nombre,
-        @JsonView({ProductoView.ProductoSinCategoria.class})
+        @JsonView({ProductoSinCategoria.class})
         String imagen,
-        @JsonView({ProductoView.ProductoSinCategoria.class})
+        @JsonView({ProductoSinCategoria.class})
         String descripcion,
-        @JsonView({ProductoView.ProductoSinCategoria.class})
+        @JsonView({ProductoSinCategoria.class})
         double precio,
-        @JsonView({ProductoView.ProductoSinCategoria.class})
+        @JsonView({ProductoSinCategoria.class})
         double precioOferta,
-        @JsonView({ProductoView.ProductoSinCategoria.class})
+        @JsonView({ProductoSinCategoria.class})
         List<String> tags,
-        @JsonView({ProductoView.ProductoCompleto.class})
+        @JsonView({ProductoCompleto.class})
         String categoria
 ) {
 
