@@ -63,10 +63,63 @@ public class ProductoController {
                             examples = {@ExampleObject(
                                     value = """
                                                 [
-                                                    {"id": 1, "nombre": "Veggie"},
-                                                    {"id": 2, "nombre": "Carne"},
-                                                    {"id": 3, "nombre": "Pescado"}
-                                                ]
+                                                     {
+                                                         "id": 1,
+                                                         "nombre": "Producto de ejemplo",
+                                                         "imagen": "imagen.jpg",
+                                                         "descripcion": "Este es un producto de ejemplo",
+                                                         "precio": 49.99,
+                                                         "precioOferta": 39.99,
+                                                         "tags": [
+                                                             "electrónica",
+                                                             "oferta",
+                                                             "gadgets"
+                                                         ],
+                                                         "categoria": "Sin categoría"
+                                                     },
+                                                     {
+                                                         "id": 2,
+                                                         "nombre": "Producto de ejemplo",
+                                                         "imagen": "imagen.jpg",
+                                                         "descripcion": "Este es un producto de ejemplo",
+                                                         "precio": 49.99,
+                                                         "precioOferta": 39.99,
+                                                         "tags": [
+                                                             "electrónica",
+                                                             "oferta",
+                                                             "gadgets"
+                                                         ],
+                                                         "categoria": "Sin categoría"
+                                                     },
+                                                     {
+                                                         "id": 3,
+                                                         "nombre": "Producto de ejemplo",
+                                                         "imagen": "imagen.jpg",
+                                                         "descripcion": "Este es un producto de ejemplo",
+                                                         "precio": 49.99,
+                                                         "precioOferta": 39.99,
+                                                         "tags": [
+                                                             "electrónica",
+                                                             "oferta",
+                                                             "gadgets"
+                                                         ],
+                                                         "categoria": "Sin categoría"
+                                                     },
+                                                     {
+                                                         "id": 4,
+                                                         "nombre": "Producto de ejemplo",
+                                                         "imagen": "imagen.jpg",
+                                                         "descripcion": "Este es un producto de ejemplo",
+                                                         "precio": 49.99,
+                                                         "precioOferta": 39.99,
+                                                         "tags": [
+                                                             "electrónica",
+                                                             "oferta",
+                                                             "gadgets"
+                                                         ],
+                                                         "categoria": "Sin categoría"
+                                                     }
+                                                 ]
                                             """
                             )}
                     )}),
