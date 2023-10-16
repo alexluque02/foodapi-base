@@ -5,6 +5,7 @@ import com.salesianostriana.dam.foodapi.dto.ClienteDto;
 import com.salesianostriana.dam.foodapi.dto.EditClienteDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
+import com.salesianostriana.dam.foodapi.modelo.ClienteView;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.ClienteList;
 import com.salesianostriana.dam.foodapi.servicios.ClienteServicio;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,10 +19,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -52,6 +52,63 @@ public class ClienteController {
     public ResponseEntity<ClienteDto> addCliente(@RequestBody EditClienteDto nuevo){
         Cliente c=servicio.add(nuevo);
         return ResponseEntity.status(HttpStatus.CREATED).body(ClienteDto.of(c));
+    }
+
+    @Operation(summary = "Lista todos los clientes")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se han encontrado clientes", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                            @ExampleObject(value = """
+                                        [
+                                            {
+                                                "id": 1,
+                                                "nombre": "Alexander",
+                                                "email": "correo@correo.com",
+                                                "telefono": "909090",
+                                                "pin": 1234,
+                                                "numeroPedidos": 0
+                                            },
+                                            {
+                                                "id": 2,
+                                                "nombre": "Pepe",
+                                                "email": "correo@correo.com",
+                                                "telefono": "909090",
+                                                "pin": 1234,
+                                                "numeroPedidos": 1
+                                            },
+                                            {
+                                                "id": 3,
+                                                "nombre": "Juan",
+                                                "email": "correo@correo.com",
+                                                "telefono": "909090",
+                                                "pin": 1234,
+                                                "numeroPedidos": 3
+                                            },
+                                            {
+                                                "id": 4,
+                                                "nombre": "Carlos",
+                                                "email": "correo@correo.com",
+                                                "telefono": "909090",
+                                                "pin": 1234,
+                                                "numeroPedidos": 7
+                                            }
+                                         ]
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningún cliente", content = @Content),
+    })
+    @GetMapping("/")
+    @JsonView({ClienteView.ClienteDetails.class})
+    public ResponseEntity<List<ClienteDto>> findAllCliente(){
+        List<Cliente> data = servicio.findAll();
+
+        if (data.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(
+                data.stream()
+                        .map(ClienteDto::of)
+                        .toList());
     }
 
 }
