@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +29,10 @@ public class ClienteServicio {
 
     public List<Cliente> findAll(){
         return repositorio.findAll();
+    }
+
+    public Optional<Cliente> findById(Long id){
+        return repositorio.findById(id);
     }
 
 }

@@ -42,9 +42,9 @@ public class ProductoController {
     @Operation(summary = "Agrega un producto")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201 Created", description = "Se ha agregado un producto con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
                             @ExampleObject(value = "{'id': 1, 'nombre': 'Alex'}") }) }),
-            @ApiResponse(responseCode = "400 Bad Request", description = "No se ha agregado ningún producto", content = @Content),
+            @ApiResponse(responseCode = "400 Bad Request", description = "No se ha agregado ningún producto", content = @Content)
     })
     @PostMapping("/")
     @JsonView({ ProductoSinCategoria.class })
@@ -56,7 +56,7 @@ public class ProductoController {
     @Operation(summary = "Buscar un producto por su id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha encontrado el producto", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 1,
@@ -73,7 +73,7 @@ public class ProductoController {
                                         "categoria": {"id": 3, "Ensaladas" }
                                     }
                                     """) }) }),
-            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto con ese id", content = @Content),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto con ese id", content = @Content)
     })
     @GetMapping("/{id}")
     public ResponseEntity<FindProductoDto> findByIdProducto(@PathVariable Long id) {
@@ -85,7 +85,7 @@ public class ProductoController {
     @Operation(summary = "Lista todos los productos")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se han encontrado productos", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
                             @ExampleObject(value = """
                                         [
                                              {
@@ -146,7 +146,7 @@ public class ProductoController {
                                              }
                                          ]
                                     """) }) }),
-            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningún producto", content = @Content),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningún producto", content = @Content)
     })
     @GetMapping("/")
     @JsonView({ ProductoCompleto.class })
@@ -166,7 +166,7 @@ public class ProductoController {
     @Operation(summary = "Editar producto")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha editado con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
                             @ExampleObject(value = """
                                         {
                                               "id": 1,
@@ -183,7 +183,7 @@ public class ProductoController {
                                               "categoria": null
                                           }
                                     """) }) }),
-            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto", content = @Content),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto", content = @Content)
     })
     @PutMapping("/{id}")
     public ResponseEntity<FindProductoDto> editProducto(@PathVariable Long id, @RequestBody EditProductoDto editar){
@@ -201,7 +201,7 @@ public class ProductoController {
                     content = @Content),
             @ApiResponse(responseCode = "400 Bad Request",
                     description = "El producto no se ha encontrado",
-                    content = @Content),
+                    content = @Content)
     })
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteProducto (@PathVariable Long id){
