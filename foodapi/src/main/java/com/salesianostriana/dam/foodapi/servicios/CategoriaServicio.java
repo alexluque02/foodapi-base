@@ -7,7 +7,9 @@ import com.salesianostriana.dam.foodapi.repos.ProductoRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -51,15 +53,17 @@ public class CategoriaServicio {
         return null;
     }
 
-    public Categoria delete(Long id){
-        Optional<Categoria> categoria = findById(id);
-        if(categoria.isPresent()){
-            repositorio.delete(categoria.get());
-            return categoria.get();
+    public Map<String, String> delete(Long id){
+        Map<String, String> response = new HashMap<>();
+        Categoria categoria = repositorio.findById(id).orElse(null);
+        if (categoria != null && countProductosByCategoria(categoria) == 0) {
+            repositorio.delete(categoria);
+        } else if(categoria != null && countProductosByCategoria(categoria) > 0){
+            response.put("error", "No se puede borrar una categoría que tiene productos asociados.");
+        } else {
+            response.put("bad request", "No se ha encontrado la categoría");
         }
-
-        return null;
-
+        return response;
     }
 
 

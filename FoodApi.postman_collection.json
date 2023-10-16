@@ -102,13 +102,13 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_URL}}/categoria/1",
+					"raw": "{{BASE_URL}}/categoria/2",
 					"host": [
 						"{{BASE_URL}}"
 					],
 					"path": [
 						"categoria",
-						"1"
+						"2"
 					]
 				}
 			},
