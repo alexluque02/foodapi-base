@@ -37,7 +37,7 @@ public class CategoriaController {
                     content = { @Content(mediaType = "application/json",
                             array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
                             examples = {@ExampleObject(
-                                    value = "{'id': 1, 'nombre': 'Alex'}"
+                                    value = "{'id': 1, 'nombre': 'Veggie'}"
                             )}
                     )}),
             @ApiResponse(responseCode = "400 Bad Request",
@@ -61,9 +61,9 @@ public class CategoriaController {
                             examples = {@ExampleObject(
                                     value = """
                                                 [
-                                                    {"id": 1, "nombre": "Alex"},
-                                                    {"id": 2, "nombre": "Pepe"},
-                                                    {"id": 3, "nombre": "Juan"}
+                                                    {"id": 1, "nombre": "Veggie"},
+                                                    {"id": 2, "nombre": "Carne"},
+                                                    {"id": 3, "nombre": "Pescado"}
                                                 ]
                                             """
                             )}
@@ -94,7 +94,7 @@ public class CategoriaController {
                     content = { @Content(mediaType = "application/json",
                             array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
                             examples = {@ExampleObject(
-                                    value = " {'id': 1, 'nombre': 'Alex', 'numProductos': 5}"
+                                    value = " {'id': 1, 'nombre': 'Veggie', 'numProductos': 5}"
                             )}
                     )}),
             @ApiResponse(responseCode = "404",
@@ -117,7 +117,7 @@ public class CategoriaController {
                     content = { @Content(mediaType = "application/json",
                             array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
                             examples = {@ExampleObject(
-                                    value = " {'id': 1, 'nombre': 'Alex'}"
+                                    value = " {'id': 1, 'nombre': 'Carne'}"
                             )}
                     )}),
             @ApiResponse(responseCode = "404",
