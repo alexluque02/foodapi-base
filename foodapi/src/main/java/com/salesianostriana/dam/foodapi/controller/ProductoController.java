@@ -194,6 +194,15 @@ public class ProductoController {
         return ResponseEntity.notFound().build();
     }
 
+    @Operation(summary = "Borra un producto")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204 No Content",
+                    description = "Se ha encontrado la categoría y se ha borrado con éxito",
+                    content = @Content),
+            @ApiResponse(responseCode = "400 Bad Request",
+                    description = "El producto no se ha encontrado",
+                    content = @Content),
+    })
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteProducto (@PathVariable Long id){
         Producto p = servicio.delete(id);

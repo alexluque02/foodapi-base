@@ -145,7 +145,7 @@ public class CategoriaController {
                     content = @Content),
     })
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCategory(@PathVariable Long id){
+    public ResponseEntity<?> deleteCategoria(@PathVariable Long id){
 
         Map<String, String> response = servicio.delete(id);
         if (response.containsKey("error")) {
