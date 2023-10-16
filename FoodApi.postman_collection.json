@@ -203,6 +203,14 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Delete Producto",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"event": [
