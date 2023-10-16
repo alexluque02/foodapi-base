@@ -70,4 +70,13 @@ public class ProductoServicio {
             return null;
     }
 
+    public Producto delete(Long id){
+        Optional<Producto> producto = repositorio.findById(id);
+        if (producto.isPresent()) {
+            repositorio.delete(producto.get());
+            return producto.get();
+        }
+        return null;
+    }
+
 }
