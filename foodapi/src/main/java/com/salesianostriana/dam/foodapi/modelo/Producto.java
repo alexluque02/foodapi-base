@@ -26,7 +26,7 @@ public class Producto {
 
     private double precioOferta;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> tags;
 
     @ManyToOne

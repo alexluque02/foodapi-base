@@ -8,6 +8,8 @@ import com.salesianostriana.dam.foodapi.repos.ProductoRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ProductoServicio {
@@ -32,6 +34,12 @@ public class ProductoServicio {
             }
         }
         return repositorio.save(p);
+    }
+
+
+
+    public Optional<Producto> findById(Long id){
+        return repositorio.findById(id);
     }
 
 }
