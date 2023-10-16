@@ -7,6 +7,8 @@ import com.salesianostriana.dam.foodapi.repos.ClienteRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ClienteServicio {
@@ -22,6 +24,10 @@ public class ClienteServicio {
             c.setPin(nuevo.pin());
         }
         return repositorio.save(c);
+    }
+
+    public List<Cliente> findAll(){
+        return repositorio.findAll();
     }
 
 }

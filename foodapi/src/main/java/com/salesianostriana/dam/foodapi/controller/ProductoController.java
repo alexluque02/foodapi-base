@@ -146,7 +146,7 @@ public class ProductoController {
                                              }
                                          ]
                                     """) }) }),
-            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto", content = @Content),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningún producto", content = @Content),
     })
     @GetMapping("/")
     @JsonView({ ProductoCompleto.class })
