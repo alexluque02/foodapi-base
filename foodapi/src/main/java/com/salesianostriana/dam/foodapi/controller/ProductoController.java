@@ -2,6 +2,8 @@ package com.salesianostriana.dam.foodapi.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.salesianostriana.dam.foodapi.dto.EditProductoDto;
+import com.salesianostriana.dam.foodapi.dto.FindCategoriaDto;
+import com.salesianostriana.dam.foodapi.dto.FindProductoDto;
 import com.salesianostriana.dam.foodapi.dto.ProductoDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
@@ -19,10 +21,9 @@ import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -54,4 +55,40 @@ public class ProductoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(ProductoDto.of(p));
     }
 
+
+    @Operation(summary = "Buscar un producto por su id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Se ha encontrado el producto",
+                    content = { @Content(mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
+                            examples = {@ExampleObject(
+                                    value = """
+                                            {
+                                                "id": 1,
+                                                "nombre": "Producto de ejemplo",
+                                                "imagen": "imagen.jpg",
+                                                "descripcion": "Este es un producto de ejemplo",
+                                                "precio": 49.99,
+                                                "precioOferta": 39.99,
+                                                "tags": [
+                                                    "electrónica",
+                                                    "oferta",
+                                                    "gadgets"
+                                                ],
+                                                "categoria": null
+                                            }
+                                            """
+                            )}
+                    )}),
+            @ApiResponse(responseCode = "404",
+                    description = "No se ha encontrado ningun producto con ese id",
+                    content = @Content),
+    })
+    @GetMapping("/{id}")
+    public ResponseEntity<FindProductoDto> findByIdProducto(@PathVariable Long id){
+        Optional<Producto> producto = servicio.findById(id);
+        return producto.map(value -> ResponseEntity.ok(FindProductoDto.of(producto.get()))
+        ).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
