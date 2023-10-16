@@ -97,7 +97,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete Category",
+			"name": "Delete Categoria",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -121,7 +121,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Producto de ejemplo\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Este es un producto de ejemplo\",\r\n  \"precio\": 49.99,\r\n  \"precioOferta\": 39.99,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"],\r\n  \"categoria\": 1\r\n}",
+					"raw": "{\r\n  \"nombre\": \"Producto de ejemplo\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Este es un producto de ejemplo\",\r\n  \"precio\": 49.99,\r\n  \"precioOferta\": 39.99,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"],\r\n  \"categoria\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -207,8 +207,81 @@
 		{
 			"name": "Delete Producto",
 			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/producto/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Alexander\",\r\n    \"email\": \"correo@correo.com\",\r\n    \"telefono\": \"909090\",\r\n    \"pin\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/cliente/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"cliente",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All Cliente",
+			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/cliente/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"cliente",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/cliente/2",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"cliente",
+						"2"
+					]
+				}
 			},
 			"response": []
 		}

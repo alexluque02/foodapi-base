@@ -5,7 +5,7 @@ import com.salesianostriana.dam.foodapi.dto.ClienteDto;
 import com.salesianostriana.dam.foodapi.dto.EditClienteDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
-import com.salesianostriana.dam.foodapi.modelo.ClienteView;
+import com.salesianostriana.dam.foodapi.modelo.ClienteView.*;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.ClienteList;
 import com.salesianostriana.dam.foodapi.servicios.ClienteServicio;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,9 +19,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,7 +37,7 @@ public class ClienteController {
     @Operation(summary = "Agrega un cliente")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201 Created", description = "Se ha agregado un cliente con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 6,
@@ -45,7 +47,7 @@ public class ClienteController {
                                         "pin": 1234
                                     }
                                     """) }) }),
-            @ApiResponse(responseCode = "400 Bad Request", description = "No se ha agregado ningún cliente", content = @Content),
+            @ApiResponse(responseCode = "400 Bad Request", description = "No se ha agregado ningún cliente", content = @Content)
     })
     @PostMapping("/")
     @JsonView({ClienteList.class})
@@ -57,7 +59,7 @@ public class ClienteController {
     @Operation(summary = "Lista todos los clientes")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se han encontrado clientes", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
                             @ExampleObject(value = """
                                         [
                                             {
@@ -94,10 +96,10 @@ public class ClienteController {
                                             }
                                          ]
                                     """) }) }),
-            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningún cliente", content = @Content),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningún cliente", content = @Content)
     })
     @GetMapping("/")
-    @JsonView({ClienteView.ClienteDetails.class})
+    @JsonView({ClienteDetails.class})
     public ResponseEntity<List<ClienteDto>> findAllCliente(){
         List<Cliente> data = servicio.findAll();
 
@@ -109,6 +111,36 @@ public class ClienteController {
                 data.stream()
                         .map(ClienteDto::of)
                         .toList());
+    }
+
+
+    @Operation(summary = "Encuentra un cliente por su id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se ha encontrado el cliente", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
+                            @ExampleObject(value = """
+                                    {
+                                        "id": 2,
+                                        "nombre": "Alexander",
+                                        "email": "correo@correo.com",
+                                        "telefono": "909090",
+                                        "pin": 1234,
+                                        "pedidos": []
+                                    }
+                                    """)
+                    })
+            }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado el cliente", content = @Content)
+    })
+    @GetMapping("/{id}")
+    @JsonView({ClienteComplete.class})
+    public ResponseEntity<ClienteDto> findByIdCliente(@PathVariable Long id){
+        Optional<Cliente> cliente = servicio.findById(id);
+
+        return cliente.map(value ->
+                ResponseEntity.ok(ClienteDto.of(value))).orElseGet(() ->
+                ResponseEntity.notFound().build());
+
     }
 
 }
