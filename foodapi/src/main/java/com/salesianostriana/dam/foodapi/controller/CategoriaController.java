@@ -128,7 +128,7 @@ public class CategoriaController {
     public ResponseEntity<CategoriaDto> editCategoria(@PathVariable Long id, @RequestBody CategoriaDto editar){
         Categoria c = servicio.edit(id, editar);
         if (c != null) {
-            return ResponseEntity.ok(editar.of(c));
+            return ResponseEntity.ok(CategoriaDto.of(c));
         }
         return ResponseEntity.notFound().build();
     }

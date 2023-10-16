@@ -55,7 +55,7 @@ public class ProductoController {
 
     @Operation(summary = "Buscar un producto por su id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Se ha encontrado el producto", content = {
+            @ApiResponse(responseCode = "200 OK", description = "Se ha encontrado el producto", content = {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
                             @ExampleObject(value = """
                                     {
@@ -70,10 +70,10 @@ public class ProductoController {
                                             "oferta",
                                             "gadgets"
                                         ],
-                                        "categoria": null
+                                        "categoria": {"id": 3, "Ensaladas" }
                                     }
                                     """) }) }),
-            @ApiResponse(responseCode = "404", description = "No se ha encontrado ningun producto con ese id", content = @Content),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto con ese id", content = @Content),
     })
     @GetMapping("/{id}")
     public ResponseEntity<FindProductoDto> findByIdProducto(@PathVariable Long id) {
@@ -84,7 +84,7 @@ public class ProductoController {
 
     @Operation(summary = "Lista todos los productos")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Se han encontrado productos", content = {
+            @ApiResponse(responseCode = "200 OK", description = "Se han encontrado productos", content = {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
                             @ExampleObject(value = """
                                         [
@@ -114,7 +114,7 @@ public class ProductoController {
                                                      "oferta",
                                                      "gadgets"
                                                  ],
-                                                 "categoria": "Sin categoría"
+                                                 "categoria": "Veggie"
                                              },
                                              {
                                                  "id": 3,
@@ -128,7 +128,7 @@ public class ProductoController {
                                                      "oferta",
                                                      "gadgets"
                                                  ],
-                                                 "categoria": "Sin categoría"
+                                                 "categoria": "Carne"
                                              },
                                              {
                                                  "id": 4,
@@ -142,11 +142,11 @@ public class ProductoController {
                                                      "oferta",
                                                      "gadgets"
                                                  ],
-                                                 "categoria": "Sin categoría"
+                                                 "categoria": "Ensaladas"
                                              }
                                          ]
                                     """) }) }),
-            @ApiResponse(responseCode = "404", description = "No se ha encontrado ningun producto", content = @Content),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto", content = @Content),
     })
     @GetMapping("/")
     @JsonView({ ProductoView.ProductoCompleto.class })
@@ -161,6 +161,37 @@ public class ProductoController {
                 data.stream()
                         .map(ProductoDto::of)
                         .toList());
+    }
+
+    @Operation(summary = "Editar producto")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se ha editado con éxito", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                            @ExampleObject(value = """
+                                        {
+                                              "id": 1,
+                                              "nombre": "Ensalada",
+                                              "imagen": "imagen.jpg",
+                                              "descripcion": "Una rica ensalada",
+                                              "precio": 20.15,
+                                              "precioOferta": 0.0,
+                                              "tags": [
+                                                  "electrónica",
+                                                  "oferta",
+                                                  "gadgets"
+                                              ],
+                                              "categoria": null
+                                          }
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto", content = @Content),
+    })
+    @PutMapping("/{id}")
+    public ResponseEntity<FindProductoDto> editProducto(@PathVariable Long id, @RequestBody EditProductoDto editar){
+        Producto p = servicio.edit(id, editar);
+        if (p != null) {
+            return ResponseEntity.ok(FindProductoDto.of(p));
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
