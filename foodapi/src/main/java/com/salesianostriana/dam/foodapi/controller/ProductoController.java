@@ -194,4 +194,15 @@ public class ProductoController {
         return ResponseEntity.notFound().build();
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deleteProducto (@PathVariable Long id){
+        Producto p = servicio.delete(id);
+
+        if(p!=null){
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
 }
