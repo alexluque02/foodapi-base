@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.foodapi.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.salesianostriana.dam.foodapi.dto.CategoriaDto;
 import com.salesianostriana.dam.foodapi.dto.EditProductoDto;
 import com.salesianostriana.dam.foodapi.dto.ProductoDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
@@ -19,10 +20,9 @@ import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -52,6 +52,42 @@ public class ProductoController {
     public ResponseEntity<ProductoDto> addProducto(@RequestBody EditProductoDto nuevo){
         Producto p = servicio.add(nuevo);
         return ResponseEntity.status(HttpStatus.CREATED).body(ProductoDto.of(p));
+    }
+
+    @Operation(summary = "Lista todos los productos")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Se han encontrado productos",
+                    content = { @Content(mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
+                            examples = {@ExampleObject(
+                                    value = """
+                                                [
+                                                    {"id": 1, "nombre": "Veggie"},
+                                                    {"id": 2, "nombre": "Carne"},
+                                                    {"id": 3, "nombre": "Pescado"}
+                                                ]
+                                            """
+                            )}
+                    )}),
+            @ApiResponse(responseCode = "404",
+                    description = "No se ha encontrado ningun producto",
+                    content = @Content),
+    })
+    @GetMapping("/")
+    @JsonView({ProductoView.ProductoCompleto.class})
+    public ResponseEntity<List<ProductoDto>> findAllProducto(){
+        List<Producto> data = servicio.findAll();
+
+        if(data.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(
+                data.stream()
+                        .map(ProductoDto::of)
+                        .toList()
+        );
     }
 
 }
