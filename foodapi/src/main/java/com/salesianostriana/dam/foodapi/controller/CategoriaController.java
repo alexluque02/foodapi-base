@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -139,18 +140,22 @@ public class CategoriaController {
                     description = "Se ha encontrado la categoría y se ha borrado con éxito",
                     content = @Content),
             @ApiResponse(responseCode = "400 Bad Request",
-                    description = "No se ha encontrado ninguna categoría con ese id",
+                    description = "Si hay productos asociados devolverá un mensaje indicándolo y de lo contrario" +
+                            ", si la categoría no existe, también se indicará con un mensaje de error",
                     content = @Content),
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCategory(@PathVariable Long id){
-        Categoria c = servicio.delete(id);
 
-        if(c!=null){
-            return ResponseEntity.noContent().build();
+        Map<String, String> response = servicio.delete(id);
+        if (response.containsKey("error")) {
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        } else if (response.containsKey("bad request")) {
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }
 
-        return ResponseEntity.badRequest().build();
     }
 
 }
