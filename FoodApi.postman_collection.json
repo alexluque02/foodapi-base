@@ -140,6 +140,69 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Find All Producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/producto/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Id Producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/producto/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Producto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Ensalada\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Una rica ensalada\",\r\n  \"precio\": 20.15,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/producto/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"producto",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
