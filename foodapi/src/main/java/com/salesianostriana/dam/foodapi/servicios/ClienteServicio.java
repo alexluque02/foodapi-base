@@ -35,4 +35,16 @@ public class ClienteServicio {
         return repositorio.findById(id);
     }
 
+    public Cliente edit(Long id, EditClienteDto editar){
+        Optional<Cliente> cliente = findById(id);
+        if(cliente.isPresent()){
+            Cliente c = cliente.get();
+            c.setNombre(editar.nombre());
+            c.setEmail(editar.email());
+            c.setPin(editar.pin());
+            c.setTelefono(editar.telefono());
+            return repositorio.save(c);
+        }
+        return null;
+    }
 }
