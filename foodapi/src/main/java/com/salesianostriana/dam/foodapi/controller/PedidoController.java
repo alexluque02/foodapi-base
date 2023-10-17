@@ -10,10 +10,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,6 +30,22 @@ public class PedidoController {
         Pedido p = servicio.add(nuevo);
         System.out.println();
         return ResponseEntity.status(HttpStatus.CREATED).body(PedidoDto.of(p));
+    }
+
+    @GetMapping("/")
+    @JsonView({PedidoShort.class})
+    public ResponseEntity<List<PedidoDto>> findAllPedido(){
+        List<Pedido> data = servicio.findAll();
+
+        if (data.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(
+                data.stream()
+                        .map(PedidoDto::of2)
+                        .toList()
+        );
     }
 
 }
