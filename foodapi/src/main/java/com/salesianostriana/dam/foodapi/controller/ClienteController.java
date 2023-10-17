@@ -3,10 +3,12 @@ package com.salesianostriana.dam.foodapi.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.salesianostriana.dam.foodapi.dto.ClienteDto;
 import com.salesianostriana.dam.foodapi.dto.EditClienteDto;
+import com.salesianostriana.dam.foodapi.dto.FindProductoDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.*;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.ClienteList;
+import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.servicios.ClienteServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -141,6 +143,34 @@ public class ClienteController {
                 ResponseEntity.ok(ClienteDto.of(value))).orElseGet(() ->
                 ResponseEntity.notFound().build());
 
+    }
+
+    @Operation(summary = "Edita un cliente obteniendo su id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se ha encontrado el cliente y se ha editado con éxito", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
+                            @ExampleObject(value = """
+                                    {
+                                        "id": 2,
+                                        "nombre": "Pepe",
+                                        "email": "correo@correo.com",
+                                        "telefono": "909090",
+                                        "pin": 4321,
+                                        "pedidos": []
+                                    }
+                                    """)
+                    })
+            }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado el cliente", content = @Content)
+    })
+    @PutMapping("/{id}")
+    @JsonView({ClienteComplete.class})
+    public ResponseEntity<ClienteDto> editCliente(@PathVariable Long id, @RequestBody EditClienteDto editar){
+        Cliente c = servicio.edit(id, editar);
+        if (c != null) {
+            return ResponseEntity.ok(ClienteDto.of(c));
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
