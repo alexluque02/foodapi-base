@@ -8,13 +8,13 @@ import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import java.util.List;
 
 public record ClienteDto(
-        @JsonView({ClienteList.class, ClienteComplete.class})
+        @JsonView({ClienteBasic.class, ClienteComplete.class})
         Long id,
-        @JsonView({ClienteList.class, ClienteComplete.class})
+        @JsonView({ClienteBasic.class, ClienteComplete.class})
         String nombre,
-        @JsonView({ClienteList.class, ClienteComplete.class})
+        @JsonView({ClienteSinPin.class, ClienteComplete.class})
         String email,
-        @JsonView({ClienteList.class, ClienteComplete.class})
+        @JsonView({ClienteSinPin.class, ClienteComplete.class})
         String telefono,
         @JsonView({ClienteList.class, ClienteComplete.class})
         int pin,
