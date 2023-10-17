@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.foodapi.modelo;
 
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,5 +32,6 @@ public class Producto {
 
     @ManyToOne
     private Categoria categoria;
+
 
 }

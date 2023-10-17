@@ -12,6 +12,7 @@ public class LineaPedido {
 
     @Id
     @ManyToOne
+    @ToString.Exclude
     private Pedido pedido;
 
     @Id
@@ -23,6 +24,7 @@ public class LineaPedido {
     private int cantidad;
 
     @ManyToOne
+    @ToString.Exclude
     private Producto producto;
 
     public LineaPedidoPK getId() { // Nos devuelve la PK completa
