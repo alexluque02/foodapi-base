@@ -69,7 +69,7 @@ public class PedidoController {
                                         ]
                                     }
                                     """) }) }),
-            @ApiResponse(responseCode = "400 Bad Request", description = "No se ha podido crear el producto", content = @Content)
+            @ApiResponse(responseCode = "400 Bad Request", description = "No se ha podido crear el pedido", content = @Content)
     })
     @PostMapping("/")
     @JsonView({PedidoBasic.class})
@@ -81,6 +81,38 @@ public class PedidoController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 
+    @Operation(summary = "Lista todos los pedidos")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se han encontrado pedidos", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                            @ExampleObject(value = """
+                                    [
+                                         {
+                                             "id": 1,
+                                             "fecha": "17/10/2023 19:22:34",
+                                             "importe": 149.97000000000003,
+                                             "cliente": {
+                                                 "id": 1,
+                                                 "nombre": "Alexander"
+                                             },
+                                             "cantidadProductosDiferentes": 2,
+                                             "cantidadTotal": 3
+                                         },
+                                         {
+                                             "id": 2,
+                                             "fecha": "17/10/2023 19:22:36",
+                                             "importe": 149.97000000000003,
+                                             "cliente": {
+                                                 "id": 1,
+                                                 "nombre": "Alexander"
+                                             },
+                                             "cantidadProductosDiferentes": 2,
+                                             "cantidadTotal": 3
+                                         }
+                                     ]
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido encontrar ningún pedido", content = @Content)
+    })
     @GetMapping("/")
     @JsonView({PedidoShort.class})
     public ResponseEntity<List<PedidoDto>> findAllPedido(){
