@@ -25,6 +25,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -171,6 +172,29 @@ public class ClienteController {
             return ResponseEntity.ok(ClienteDto.of(c));
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @Operation(summary = "Borra un cliente")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204 No Content",
+                    description = "Se ha encontrado el cliente y se ha borrado con éxito",
+                    content = @Content),
+            @ApiResponse(responseCode = "400 Bad Request",
+                    description = "Si hay pedidos asociados devolverá un mensaje indicándolo y de lo contrario" +
+                            ", si el cliente no existe, también se indicará con un mensaje de error",
+                    content = @Content),
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCliente(@PathVariable Long id){
+        Map<String, String> response = servicio.delete(id);
+
+        if(response.containsKey("error")){
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }else if (response.containsKey("bad request")){
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+        }
     }
 
 }
