@@ -284,6 +284,96 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Edit Cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Pepep\",\r\n    \"email\": \"correo@correo.com\",\r\n    \"telefono\": \"909090\",\r\n    \"pin\": 4211\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/cliente/2",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"cliente",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Cliente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/cliente/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"cliente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"idCliente\": 1, \r\n    \"lineasPedido\": \r\n        [\r\n            { \"idProducto\": 1, \"cantidad\": 1 },\r\n            { \"idProducto\": 3, \"cantidad\": 2 }\r\n        ] \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/pedido/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"pedido",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All Pedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/pedido/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"pedido",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
