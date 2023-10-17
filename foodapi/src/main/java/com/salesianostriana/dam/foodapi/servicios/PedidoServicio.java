@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.foodapi.servicios;
 
-import com.salesianostriana.dam.foodapi.dto.lineaPedido.LineaPedidoDtoList;
+import com.salesianostriana.dam.foodapi.dto.lineaPedido.LineaPedidoListDto;
 import com.salesianostriana.dam.foodapi.dto.pedido.AddPedidoDto;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.modelo.LineaPedido;
@@ -33,7 +33,7 @@ public class PedidoServicio {
                 p.setCliente(cliente.get());
                 p.setFecha(LocalDateTime.now());
 
-                for (LineaPedidoDtoList linea : nuevo.lineasPedido()) {
+                for (LineaPedidoListDto linea : nuevo.lineasPedido()) {
                     Optional<Producto> productoOptional = productoRepositorio.findById(linea.idProducto());
 
                     if (productoOptional.isPresent()) {
@@ -52,6 +52,10 @@ public class PedidoServicio {
 
     public List<Pedido> findAll(){
         return repositorio.findAll();
+    }
+
+    public Optional<Pedido> findById(Long id){
+        return repositorio.findById(id);
     }
 
 }

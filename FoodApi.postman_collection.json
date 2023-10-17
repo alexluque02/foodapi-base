@@ -374,6 +374,24 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Find By Id Pedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/pedido/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"pedido",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
