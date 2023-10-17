@@ -42,9 +42,9 @@ public class PedidoServicio {
                         lineaPedido.setCantidad(linea.cantidad());
                         lineaPedido.setPrecioUnitario(lineaPedido.getProducto().getPrecio());
                         p.addLineaPedido(lineaPedido);
-                        return repositorio.save(p);
                     }
                 }
+                return repositorio.save(p);
             }
         }
         return null;

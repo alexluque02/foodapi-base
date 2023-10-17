@@ -38,18 +38,35 @@ public class PedidoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
                             @ExampleObject(value = """
                                     {
-                                        "id": 1,
-                                        "nombre": "Producto de ejemplo",
-                                        "imagen": "imagen.jpg",
-                                        "descripcion": "Este es un producto de ejemplo",
-                                        "precio": 49.99,
-                                        "precioOferta": 39.99,
-                                        "tags": [
-                                            "electrónica",
-                                            "oferta",
-                                            "gadgets"
-                                        ],
-                                        "categoria": {"id": 3, "Ensaladas" }
+                                        "id": 2,
+                                        "fecha": "17/10/2023 19:18:24",
+                                        "importe": 149.97000000000003,
+                                        "cliente": {
+                                            "id": 1,
+                                            "nombre": "Alexander"
+                                        },
+                                        "lineasPedido": [
+                                            {
+                                                "codLinea": 2,
+                                                "producto": {
+                                                    "id": 1,
+                                                    "nombre": "Producto de ejemplo"
+                                                },
+                                                "cantidad": 1,
+                                                "precioUnitario": 49.99,
+                                                "subtotal": 49.99
+                                            },
+                                            {
+                                                "codLinea": 3,
+                                                "producto": {
+                                                    "id": 3,
+                                                    "nombre": "Producto de ejemplo"
+                                                },
+                                                "cantidad": 2,
+                                                "precioUnitario": 49.99,
+                                                "subtotal": 99.98
+                                            }
+                                        ]
                                     }
                                     """) }) }),
             @ApiResponse(responseCode = "400 Bad Request", description = "No se ha podido crear el producto", content = @Content)
@@ -58,7 +75,6 @@ public class PedidoController {
     @JsonView({PedidoBasic.class})
     public ResponseEntity<PedidoDto> addPedido(@RequestBody AddPedidoDto nuevo){
         Pedido p = servicio.add(nuevo);
-        System.out.println(p.toString());
         if(p!=null){
             return ResponseEntity.status(HttpStatus.CREATED).body(PedidoDto.of(p));
         }

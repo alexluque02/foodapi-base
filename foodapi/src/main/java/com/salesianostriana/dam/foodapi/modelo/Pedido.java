@@ -25,6 +25,7 @@ public class Pedido {
     private LocalDateTime fecha;
 
     @ManyToOne
+    @ToString.Exclude
     private Cliente cliente;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
