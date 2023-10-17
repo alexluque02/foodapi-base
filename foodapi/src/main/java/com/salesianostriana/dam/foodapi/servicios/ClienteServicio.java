@@ -2,12 +2,15 @@ package com.salesianostriana.dam.foodapi.servicios;
 
 import com.salesianostriana.dam.foodapi.dto.ClienteDto;
 import com.salesianostriana.dam.foodapi.dto.EditClienteDto;
+import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.repos.ClienteRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -46,5 +49,18 @@ public class ClienteServicio {
             return repositorio.save(c);
         }
         return null;
+    }
+
+    public Map<String, String> delete(Long id){
+        Map<String, String> response = new HashMap<>();
+        Cliente cliente= repositorio.findById(id).orElse(null);
+        if (cliente != null && cliente.getPedidos().isEmpty()) {
+            repositorio.delete(cliente);
+        } else if(cliente != null){
+            response.put("error", "No se puede borrar un cliente que tiene pedidos asociados.");
+        } else {
+            response.put("bad request", "No se ha encontrado el cliente");
+        }
+        return response;
     }
 }
