@@ -2,6 +2,7 @@ package com.salesianostriana.dam.foodapi.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.salesianostriana.dam.foodapi.dto.pedido.AddPedidoDto;
+import com.salesianostriana.dam.foodapi.dto.pedido.PedidoDetailsDto;
 import com.salesianostriana.dam.foodapi.dto.pedido.PedidoDto;
 import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import com.salesianostriana.dam.foodapi.modelo.PedidoView.*;
@@ -21,6 +22,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -127,6 +129,58 @@ public class PedidoController {
                         .map(PedidoDto::of2)
                         .toList()
         );
+    }
+
+    @Operation(summary = "Busca un pedido por su id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se han encontrado el pedido", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                            @ExampleObject(value = """
+                                    {
+                                        "id": 1,
+                                        "fecha": "17/10/2023 19:51:01",
+                                        "importe": 149.97000000000003,
+                                        "cliente": {
+                                            "id": 1,
+                                            "nombre": "Alexander",
+                                            "email": "correo@correo.com",
+                                            "telefono": "909090"
+                                        },
+                                        "lineasPedido": [
+                                            {
+                                                "codLinea": 1,
+                                                "producto": {
+                                                    "id": 1,
+                                                    "nombre": "Producto de ejemplo",
+                                                    "categoria": "Sin categoría"
+                                                },
+                                                "cantidad": 1,
+                                                "precioUnitario": 49.99,
+                                                "subtotal": 49.99
+                                            },
+                                            {
+                                                "codLinea": 2,
+                                                "producto": {
+                                                    "id": 3,
+                                                    "nombre": "Producto de ejemplo",
+                                                    "categoria": "Sin categoría"
+                                                },
+                                                "cantidad": 2,
+                                                "precioUnitario": 49.99,
+                                                "subtotal": 99.98
+                                            }
+                                        ]
+                                    }
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido encontrar el pedido", content = @Content)
+    })
+    @GetMapping("/{id}")
+    public ResponseEntity<PedidoDetailsDto> findByIdPedido(@PathVariable Long id){
+        Optional<Pedido> pedido = servicio.findById(id);
+
+        return pedido.map(value -> ResponseEntity.ok(PedidoDetailsDto.of(value))).orElseGet
+                (() -> ResponseEntity.notFound().build());
+
     }
 
 }
