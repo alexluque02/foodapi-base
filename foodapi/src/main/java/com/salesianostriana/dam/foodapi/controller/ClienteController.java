@@ -1,14 +1,11 @@
 package com.salesianostriana.dam.foodapi.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.salesianostriana.dam.foodapi.dto.ClienteDto;
-import com.salesianostriana.dam.foodapi.dto.EditClienteDto;
-import com.salesianostriana.dam.foodapi.dto.FindProductoDto;
-import com.salesianostriana.dam.foodapi.modelo.Categoria;
+import com.salesianostriana.dam.foodapi.dto.cliente.ClienteDto;
+import com.salesianostriana.dam.foodapi.dto.cliente.EditClienteDto;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.*;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.ClienteList;
-import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.servicios.ClienteServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -21,7 +18,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

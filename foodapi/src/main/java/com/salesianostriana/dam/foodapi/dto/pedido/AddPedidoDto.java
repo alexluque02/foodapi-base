@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.foodapi.dto;
+package com.salesianostriana.dam.foodapi.dto.pedido;
 
 import com.salesianostriana.dam.foodapi.modelo.LineaPedido;
 import com.salesianostriana.dam.foodapi.modelo.Pedido;

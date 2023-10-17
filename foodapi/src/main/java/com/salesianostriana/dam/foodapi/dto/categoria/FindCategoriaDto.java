@@ -1,7 +1,6 @@
-package com.salesianostriana.dam.foodapi.dto;
+package com.salesianostriana.dam.foodapi.dto.categoria;
 
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
-import com.salesianostriana.dam.foodapi.modelo.Producto;
 
 public record FindCategoriaDto (
         Long id,

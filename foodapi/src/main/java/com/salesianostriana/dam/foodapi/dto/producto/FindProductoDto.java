@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.foodapi.dto;
+package com.salesianostriana.dam.foodapi.dto.producto;
 
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Producto;

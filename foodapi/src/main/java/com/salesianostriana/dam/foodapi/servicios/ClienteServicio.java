@@ -1,8 +1,6 @@
 package com.salesianostriana.dam.foodapi.servicios;
 
-import com.salesianostriana.dam.foodapi.dto.ClienteDto;
-import com.salesianostriana.dam.foodapi.dto.EditClienteDto;
-import com.salesianostriana.dam.foodapi.modelo.Categoria;
+import com.salesianostriana.dam.foodapi.dto.cliente.EditClienteDto;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.repos.ClienteRepositorio;
 import lombok.RequiredArgsConstructor;

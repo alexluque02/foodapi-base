@@ -1,7 +1,9 @@
 package com.salesianostriana.dam.foodapi.controller;
 
-import com.salesianostriana.dam.foodapi.dto.AddPedidoDto;
-import com.salesianostriana.dam.foodapi.dto.PedidoDto;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.salesianostriana.dam.foodapi.dto.pedido.AddPedidoDto;
+import com.salesianostriana.dam.foodapi.dto.pedido.PedidoDto;
+import com.salesianostriana.dam.foodapi.modelo.ClienteView.*;
 import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import com.salesianostriana.dam.foodapi.servicios.PedidoServicio;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,7 +22,9 @@ public class PedidoController {
 
     private final PedidoServicio servicio;
 
+
     @PostMapping("/")
+    @JsonView({PedidoDto.class, ClienteBasic.class})
     public ResponseEntity<PedidoDto> addPedido(@RequestBody AddPedidoDto nuevo){
         Pedido p = servicio.add(nuevo);
         return ResponseEntity.status(HttpStatus.CREATED).body(PedidoDto.of(p));

@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.foodapi.servicios;
 
-import com.salesianostriana.dam.foodapi.dto.AddPedidoDto;
+import com.salesianostriana.dam.foodapi.dto.pedido.AddPedidoDto;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import com.salesianostriana.dam.foodapi.repos.ClienteRepositorio;

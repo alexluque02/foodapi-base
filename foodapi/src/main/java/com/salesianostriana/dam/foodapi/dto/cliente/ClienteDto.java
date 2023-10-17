@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.foodapi.dto;
+package com.salesianostriana.dam.foodapi.dto.cliente;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;

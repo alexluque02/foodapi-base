@@ -1,9 +1,6 @@
 package com.salesianostriana.dam.foodapi.servicios;
 
-import com.salesianostriana.dam.foodapi.dto.CategoriaDto;
-import com.salesianostriana.dam.foodapi.dto.EditProductoDto;
-import com.salesianostriana.dam.foodapi.dto.ProductoDto;
-import com.salesianostriana.dam.foodapi.modelo.Categoria;
+import com.salesianostriana.dam.foodapi.dto.producto.EditProductoDto;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.repos.CategoriaRepositorio;
 import com.salesianostriana.dam.foodapi.repos.ProductoRepositorio;

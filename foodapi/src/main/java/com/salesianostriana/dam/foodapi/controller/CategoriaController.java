@@ -1,7 +1,7 @@
 package com.salesianostriana.dam.foodapi.controller;
 
-import com.salesianostriana.dam.foodapi.dto.CategoriaDto;
-import com.salesianostriana.dam.foodapi.dto.FindCategoriaDto;
+import com.salesianostriana.dam.foodapi.dto.categoria.CategoriaDto;
+import com.salesianostriana.dam.foodapi.dto.categoria.FindCategoriaDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.servicios.CategoriaServicio;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

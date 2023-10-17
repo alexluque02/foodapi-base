@@ -1,12 +1,9 @@
 package com.salesianostriana.dam.foodapi.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.salesianostriana.dam.foodapi.dto.CategoriaDto;
-import com.salesianostriana.dam.foodapi.dto.EditProductoDto;
-import com.salesianostriana.dam.foodapi.dto.FindCategoriaDto;
-import com.salesianostriana.dam.foodapi.dto.FindProductoDto;
-import com.salesianostriana.dam.foodapi.dto.ProductoDto;
-import com.salesianostriana.dam.foodapi.modelo.Categoria;
+import com.salesianostriana.dam.foodapi.dto.producto.EditProductoDto;
+import com.salesianostriana.dam.foodapi.dto.producto.FindProductoDto;
+import com.salesianostriana.dam.foodapi.dto.producto.ProductoDto;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.modelo.ProductoView.*;
 import com.salesianostriana.dam.foodapi.servicios.ProductoServicio;
@@ -19,13 +16,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
