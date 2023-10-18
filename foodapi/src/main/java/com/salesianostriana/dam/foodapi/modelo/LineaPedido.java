@@ -3,6 +3,7 @@ package com.salesianostriana.dam.foodapi.modelo;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Builder
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
