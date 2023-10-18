@@ -16,6 +16,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Arrays.stream;
+
 @Service
 @RequiredArgsConstructor
 public class PedidoServicio {
@@ -58,4 +60,23 @@ public class PedidoServicio {
         return repositorio.findById(id);
     }
 
+    public Pedido deleteLinea(Long id, Long codLinea){
+        Optional<Pedido> pedido = findById(id);
+
+        if(pedido.isPresent()){
+            List<LineaPedido> lineas = pedido.get().getLineasPedido();
+            if(!lineas.isEmpty()){
+                Optional<LineaPedido> first = lineas.stream()
+                        .filter(linea -> linea.getCodLinea().equals(codLinea))
+                        .findFirst();
+                if (first.isPresent()){
+                    LineaPedido lineaAEliminar = first.get();
+                    if (lineaAEliminar != null)
+                        lineas.remove(lineaAEliminar);
+                    return repositorio.save(pedido.get());
+                }
+            }
+        }
+        return null;
+    }
 }

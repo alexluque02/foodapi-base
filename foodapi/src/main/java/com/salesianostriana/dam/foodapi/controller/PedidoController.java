@@ -183,4 +183,46 @@ public class PedidoController {
 
     }
 
+    @Operation(summary = "Elimina una línea de pedido del pedido")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se ha eliminado la línea de pedido", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                            @ExampleObject(value = """
+                                    {
+                                        "id": 1,
+                                        "fecha": "18/10/2023 09:48:18",
+                                        "importe": 49.99,
+                                        "cliente": {
+                                            "id": 1,
+                                            "nombre": "Alexander"
+                                        },
+                                        "lineasPedido": [
+                                            {
+                                                "codLinea": 1,
+                                                "producto": {
+                                                    "id": 1,
+                                                    "nombre": "Producto de ejemplo"
+                                                },
+                                                "cantidad": 1,
+                                                "precioUnitario": 49.99,
+                                                "subtotal": 49.99
+                                            }
+                                        ]
+                                    }
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido eliminar la línea de pedido", content = @Content)
+    })
+    @PutMapping("/{id}/del/{codLinea}")
+    @JsonView({PedidoBasic.class})
+    public ResponseEntity<PedidoDto> deleteLineaPedido(@PathVariable Long id, @PathVariable Long codLinea){
+        Pedido pedido = servicio.deleteLinea(id, codLinea);
+
+        if(pedido!=null){
+            return ResponseEntity.ok(PedidoDto.of(pedido));
+        }
+
+        return ResponseEntity.notFound().build();
+
+    }
+
 }

@@ -392,6 +392,26 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Delete LineaPedido",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/pedido/1/del/1",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"pedido",
+						"1",
+						"del",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
