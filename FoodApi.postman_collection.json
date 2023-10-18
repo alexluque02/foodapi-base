@@ -412,6 +412,28 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Modify Cantidad LineaPedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/pedido/1/mod/2/cant/4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"pedido",
+						"1",
+						"mod",
+						"2",
+						"cant",
+						"4"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
