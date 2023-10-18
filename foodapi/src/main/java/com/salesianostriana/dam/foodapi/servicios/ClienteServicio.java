@@ -57,7 +57,7 @@ public class ClienteServicio {
         } else if(cliente != null){
             response.put("error", "No se puede borrar un cliente que tiene pedidos asociados.");
         } else {
-            response.put("bad request", "No se ha encontrado el cliente");
+            response.put("not found", "No se ha encontrado el cliente");
         }
         return response;
     }

@@ -61,7 +61,7 @@ public class CategoriaServicio {
         } else if(categoria != null && countProductosByCategoria(categoria) > 0){
             response.put("error", "No se puede borrar una categoría que tiene productos asociados.");
         } else {
-            response.put("bad request", "No se ha encontrado la categoría");
+            response.put("not found", "No se ha encontrado la categoría");
         }
         return response;
     }

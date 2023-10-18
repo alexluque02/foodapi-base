@@ -194,7 +194,7 @@ public class ProductoController {
             @ApiResponse(responseCode = "204 No Content",
                     description = "Se ha encontrado la categoría y se ha borrado con éxito",
                     content = @Content),
-            @ApiResponse(responseCode = "400 Bad Request",
+            @ApiResponse(responseCode = "404 Not Found",
                     description = "El producto no se ha encontrado",
                     content = @Content)
     })
@@ -206,7 +206,7 @@ public class ProductoController {
             return ResponseEntity.noContent().build();
         }
 
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.notFound().build();
     }
 
 }

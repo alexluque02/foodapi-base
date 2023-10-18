@@ -3,6 +3,7 @@ package com.salesianostriana.dam.foodapi.controller;
 import com.salesianostriana.dam.foodapi.dto.categoria.CategoriaDto;
 import com.salesianostriana.dam.foodapi.dto.categoria.FindCategoriaDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
+import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.servicios.CategoriaServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -139,9 +140,23 @@ public class CategoriaController {
                     description = "Se ha encontrado la categoría y se ha borrado con éxito",
                     content = @Content),
             @ApiResponse(responseCode = "400 Bad Request",
-                    description = "Si hay productos asociados devolverá un mensaje indicándolo y de lo contrario" +
-                            ", si la categoría no existe, también se indicará con un mensaje de error",
-                    content = @Content),
+                    description = "Si hay productos asociados devolverá un mensaje indicándolo",
+                    content = {
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
+                                    @ExampleObject(value = """
+                                        {
+                                              "error": "No se puede borrar una categoría que tenga productos asociados"
+                                          }
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found",
+                    description = "Si la categoría no existe, también se indicará con un mensaje de error",
+                    content = {
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                                    @ExampleObject(value = """
+                                        {
+                                              "not found": "No se ha encontrado la categoría"
+                                          }
+                                    """) }) })
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCategoria(@PathVariable Long id){
@@ -149,8 +164,8 @@ public class CategoriaController {
         Map<String, String> response = servicio.delete(id);
         if (response.containsKey("error")) {
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-        } else if (response.containsKey("bad request")) {
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        } else if (response.containsKey("not found")) {
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }
