@@ -60,6 +60,7 @@ public class PedidoServicio {
         return repositorio.findById(id);
     }
 
+
     public Pedido deleteLinea(Long id, Long codLinea){
         Optional<Pedido> pedido = findById(id);
 
@@ -73,6 +74,26 @@ public class PedidoServicio {
                     LineaPedido lineaAEliminar = first.get();
                     if (lineaAEliminar != null)
                         lineas.remove(lineaAEliminar);
+                    return repositorio.save(pedido.get());
+                }
+            }
+        }
+        return null;
+    }
+
+    public Pedido modifyCant(Long id, Long codLinea, int cantidad){
+        Optional<Pedido> pedido = findById(id);
+
+        if(pedido.isPresent()){
+            List<LineaPedido> lineas = pedido.get().getLineasPedido();
+            if(!lineas.isEmpty()){
+                Optional<LineaPedido> first = lineas.stream()
+                        .filter(linea -> linea.getCodLinea().equals(codLinea))
+                        .findFirst();
+                if (first.isPresent()){
+                    LineaPedido lineaAModificar = first.get();
+                    if (lineaAModificar != null)
+                        lineaAModificar.setCantidad(cantidad);
                     return repositorio.save(pedido.get());
                 }
             }

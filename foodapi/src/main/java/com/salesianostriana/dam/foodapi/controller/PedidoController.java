@@ -222,6 +222,49 @@ public class PedidoController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @Operation(summary = "Modifica la cantidad de productos comprados en una línea de pedido")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se ha modificado la cantidad con éxito", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                            @ExampleObject(value = """
+                                    {
+                                         "id": 1,
+                                         "fecha": "18/10/2023 10:15:10",
+                                         "importe": 199.96,
+                                         "cliente": {
+                                             "id": 1,
+                                             "nombre": "Alexander"
+                                         },
+                                         "lineasPedido": [
+                                             {
+                                                 "codLinea": 1,
+                                                 "producto": {
+                                                     "id": 1,
+                                                     "nombre": "Producto de ejemplo"
+                                                 },
+                                                 "cantidad": 4,
+                                                 "precioUnitario": 49.99,
+                                                 "subtotal": 199.96
+                                             }
+                                         ]
+                                     }
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido modificar la cantidad de productos de la línea de pedido", content = @Content)
+    })
+    @PutMapping("/{id}/mod/{codLinea}/cant/{cant}")
+    @JsonView({PedidoBasic.class})
+    public ResponseEntity<PedidoDto> modifyCantidad(@PathVariable Long id, @PathVariable Long codLinea,
+                                                    @PathVariable int cant){
+
+        Pedido pedido = servicio.modifyCant(id, codLinea, cant);
+
+        if(pedido!=null){
+            return ResponseEntity.ok(PedidoDto.of(pedido));
+        }
+
+        return ResponseEntity.notFound().build();
 
     }
 
