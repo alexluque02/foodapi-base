@@ -86,7 +86,7 @@ public class PedidoServicio {
 
         if(pedido.isPresent()){
             List<LineaPedido> lineas = pedido.get().getLineasPedido();
-            if(!lineas.isEmpty()){
+            if(!lineas.isEmpty() && cantidad > 0){
                 Optional<LineaPedido> first = lineas.stream()
                         .filter(linea -> linea.getCodLinea().equals(codLinea))
                         .findFirst();
@@ -96,6 +96,23 @@ public class PedidoServicio {
                         lineaAModificar.setCantidad(cantidad);
                     return repositorio.save(pedido.get());
                 }
+            }
+        }
+        return null;
+    }
+
+    public Pedido modifyPedidoProdAndCant(Long id, Long idProd, int cant){
+        Optional<Pedido> pedido = findById(id);
+
+        if(pedido.isPresent()){
+            Optional<Producto> producto = productoRepositorio.findById(idProd);
+            if(producto.isPresent() && cant>0){
+                LineaPedido lineaNueva = new LineaPedido();
+                lineaNueva.setProducto(producto.get());
+                lineaNueva.setPedido(pedido.get());
+                lineaNueva.setCantidad(cant);
+                pedido.get().getLineasPedido().add(lineaNueva);
+                return repositorio.save(pedido.get());
             }
         }
         return null;

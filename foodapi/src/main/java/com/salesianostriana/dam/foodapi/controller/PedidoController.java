@@ -268,4 +268,70 @@ public class PedidoController {
 
     }
 
+    @Operation(summary = "Añade una línea de pedido nueva a un pedido")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200 OK", description = "Se ha agregado con éxito la línea de pedido", content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                            @ExampleObject(value = """
+                                    {
+                                          "id": 1,
+                                          "fecha": "18/10/2023 10:49:08",
+                                          "importe": 449.91,
+                                          "cliente": {
+                                              "id": 1,
+                                              "nombre": "Alexander"
+                                          },
+                                          "lineasPedido": [
+                                              {
+                                                  "codLinea": 1,
+                                                  "producto": {
+                                                      "id": 1,
+                                                      "nombre": "Producto de ejemplo"
+                                                  },
+                                                  "cantidad": 1,
+                                                  "precioUnitario": 49.99,
+                                                  "subtotal": 49.99
+                                              },
+                                              {
+                                                  "codLinea": 2,
+                                                  "producto": {
+                                                      "id": 3,
+                                                      "nombre": "Producto de ejemplo"
+                                                  },
+                                                  "cantidad": 2,
+                                                  "precioUnitario": 49.99,
+                                                  "subtotal": 99.98
+                                              },
+                                              {
+                                                  "codLinea": 7,
+                                                  "producto": {
+                                                      "id": 1,
+                                                      "nombre": "Producto de ejemplo"
+                                                  },
+                                                  "cantidad": 6,
+                                                  "precioUnitario": 49.99,
+                                                  "subtotal": 299.94
+                                              }
+                                          ]
+                                      }
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido agregar la línea de pedido", content = @Content)
+    })
+    @PutMapping("/{id}/add/{prod}/cant/{cant}")
+    @JsonView({PedidoBasic.class})
+    public ResponseEntity<PedidoDto> modifyPedidoByAddingProducto(@PathVariable Long id, @PathVariable Long prod,
+                                                    @PathVariable int cant){
+
+        Pedido pedido = servicio.modifyPedidoProdAndCant(id, prod, cant);
+
+        if(pedido!=null){
+            return ResponseEntity.ok(PedidoDto.of(pedido));
+        }
+
+        return ResponseEntity.notFound().build();
+
+    }
+
+
+
 }

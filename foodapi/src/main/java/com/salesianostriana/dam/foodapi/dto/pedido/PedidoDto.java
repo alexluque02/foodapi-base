@@ -43,7 +43,7 @@ public record PedidoDto(
                         p.getFecha(),
                         p.getLineasPedido().stream()
                                 .mapToDouble(lineaPedido -> lineaPedido.getCantidad()*
-                                        lineaPedido.getPrecioUnitario())
+                                        lineaPedido.getProducto().getPrecio())
                                 .sum(),
                         ClienteListDto.of(p.getCliente()),
                         p.getLineasPedido().stream()
