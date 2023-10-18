@@ -416,10 +416,10 @@
 		{
 			"name": "Modify Cantidad LineaPedido",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "{{BASE_URL}}/pedido/1/mod/2/cant/4",
+					"raw": "{{BASE_URL}}/pedido/1/mod/1/cant/4",
 					"host": [
 						"{{BASE_URL}}"
 					],
@@ -427,7 +427,29 @@
 						"pedido",
 						"1",
 						"mod",
-						"2",
+						"1",
+						"cant",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Pedido By Adding Producto and Cantidad",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/pedido/1/add/1/cant/4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"pedido",
+						"1",
+						"add",
+						"1",
 						"cant",
 						"4"
 					]
