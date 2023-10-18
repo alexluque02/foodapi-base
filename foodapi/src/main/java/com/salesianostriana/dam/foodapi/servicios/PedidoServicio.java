@@ -117,4 +117,14 @@ public class PedidoServicio {
         }
         return null;
     }
+
+    public Pedido delete(Long id){
+        Optional<Pedido> pedido = repositorio.findById(id);
+        if(pedido.isPresent()){
+            repositorio.delete(pedido.get());
+            return pedido.get();
+        }
+
+        return null;
+    }
 }

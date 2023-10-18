@@ -6,6 +6,7 @@ import com.salesianostriana.dam.foodapi.dto.cliente.EditClienteDto;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.*;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.ClienteList;
+import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.servicios.ClienteServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -176,9 +177,23 @@ public class ClienteController {
                     description = "Se ha encontrado el cliente y se ha borrado con éxito",
                     content = @Content),
             @ApiResponse(responseCode = "400 Bad Request",
-                    description = "Si hay pedidos asociados devolverá un mensaje indicándolo y de lo contrario" +
-                            ", si el cliente no existe, también se indicará con un mensaje de error",
-                    content = @Content),
+                    description = "Si hay pedidos asociados devolverá un mensaje indicándolo",
+                    content = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
+                            @ExampleObject(value = """
+                                        {
+                                              "error": "No se puede borrar un cliente que tenga pedidos asociados"
+                                          }
+                                    """) }) }),
+            @ApiResponse(responseCode = "404 Not Found",
+                    description = "Si no encuentra el cliente nos devolverá un mensaje indicándolo",
+                    content = {
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
+                                    @ExampleObject(value = """
+                                        {
+                                              "not found": "No se ha encontrado el cliente"
+                                          }
+                                    """) }) })
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCliente(@PathVariable Long id){
@@ -186,8 +201,8 @@ public class ClienteController {
 
         if(response.containsKey("error")){
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-        }else if (response.containsKey("bad request")){
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }else if (response.containsKey("not found")){
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }else{
             return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
         }

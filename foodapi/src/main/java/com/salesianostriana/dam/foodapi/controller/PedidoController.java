@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -330,6 +331,24 @@ public class PedidoController {
 
         return ResponseEntity.notFound().build();
 
+    }
+
+    @Operation(summary = "Borra un pedido")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204 No Content",
+                    description = "Se ha encontrado el pedido y se ha borrado con éxito",
+                    content = @Content),
+            @ApiResponse(responseCode = "404 Not Found",
+                    description = "El pedido no se ha encontrado",
+                    content = @Content)
+    })
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePedido(@PathVariable Long id){
+        Pedido p= servicio.delete(id);
+        if(p!=null)
+            return ResponseEntity.noContent().build();
+
+        return ResponseEntity.notFound().build();
     }
 
 
