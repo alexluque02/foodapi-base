@@ -63,18 +63,18 @@ public class PedidoServicio {
 
     public Pedido deleteLinea(Long id, Long codLinea){
         Optional<Pedido> pedido = findById(id);
-
         if(pedido.isPresent()){
+            Pedido p = pedido.get();
             List<LineaPedido> lineas = pedido.get().getLineasPedido();
             if(!lineas.isEmpty()){
                 Optional<LineaPedido> first = lineas.stream()
-                        .filter(linea -> linea.getCodLinea().equals(codLinea))
+                        .filter(linea -> linea.getId().getPedido().equals(p) && linea.getId().getCodLinea().equals(codLinea))
                         .findFirst();
                 if (first.isPresent()){
                     LineaPedido lineaAEliminar = first.get();
-                    if (lineaAEliminar != null)
-                        lineas.remove(lineaAEliminar);
-                    return repositorio.save(pedido.get());
+                    //p.removeLineaPedido(lineaAEliminar);
+                    lineas.remove(lineaAEliminar);
+                    return repositorio.save(p);
                 }
             }
         }
@@ -111,7 +111,7 @@ public class PedidoServicio {
                 lineaNueva.setProducto(producto.get());
                 lineaNueva.setPedido(pedido.get());
                 lineaNueva.setCantidad(cant);
-                pedido.get().getLineasPedido().add(lineaNueva);
+                pedido.get().addLineaPedido(lineaNueva);
                 return repositorio.save(pedido.get());
             }
         }
