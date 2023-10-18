@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.foodapi.dto.cliente;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.salesianostriana.dam.foodapi.dto.pedido.PedidoClienteListDto;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.*;
 import com.salesianostriana.dam.foodapi.modelo.Pedido;
@@ -21,15 +22,10 @@ public record ClienteDto(
         @JsonView({ClienteDetails.class})
         int numeroPedidos,
         @JsonView({ClienteComplete.class})
-        List<Pedido> pedidos
+        List<PedidoClienteListDto> pedidos
 
 
 ) {
-
-    public ClienteDto(Long id, String nombre, String email,
-                      String telefono, int pin){
-        this(id, nombre, email, telefono, pin, 0, null);
-    }
 
     public static ClienteDto of(Cliente c){
         return new ClienteDto(
@@ -39,7 +35,9 @@ public record ClienteDto(
                 c.getTelefono(),
                 c.getPin(),
                 c.getPedidos().size(),
-                c.getPedidos()
+                c.getPedidos().stream()
+                        .map(PedidoClienteListDto::of)
+                        .toList()
         );
     }
 

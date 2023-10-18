@@ -7,473 +7,493 @@
 	},
 	"item": [
 		{
-			"name": "Add Categoria",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Pepito\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Add Categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Pepito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/categoria/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categoria",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/categoria/",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"categoria",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Find All Categoria",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/categoria/",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"categoria",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Find By Id Categoria",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/categoria/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"categoria",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit Categoria",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\" : \"Juan\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Find All Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/categoria/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categoria",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/categoria/5",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"categoria",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Categoria",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/categoria/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"categoria",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add Producto",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Producto de ejemplo\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Este es un producto de ejemplo\",\r\n  \"precio\": 49.99,\r\n  \"precioOferta\": 39.99,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"],\r\n  \"categoria\": 1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Find By Id Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/categoria/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categoria",
+								"3"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/producto/",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"producto",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Find All Producto",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/producto/",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"producto",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Find By Id Producto",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/producto/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"producto",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit Producto",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nombre\": \"Ensalada\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Una rica ensalada\",\r\n  \"precio\": 20.15,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Edit Categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Bebidas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/categoria/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categoria",
+								"2"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/producto/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"producto",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Producto",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/producto/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"producto",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add Cliente",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Alexander\",\r\n    \"email\": \"correo@correo.com\",\r\n    \"telefono\": \"909090\",\r\n    \"pin\": \"1234\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Delete Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/categoria/4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"categoria",
+								"4"
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "{{BASE_URL}}/cliente/",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"cliente",
-						""
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Find All Cliente",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/cliente/",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"cliente",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Find By Id Cliente",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/cliente/2",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"cliente",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Edit Cliente",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Pepep\",\r\n    \"email\": \"correo@correo.com\",\r\n    \"telefono\": \"909090\",\r\n    \"pin\": 4211\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Producto",
+			"item": [
+				{
+					"name": "Add Producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Producto de ejemplo\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Este es un producto de ejemplo\",\r\n  \"precio\": 49.99,\r\n  \"precioOferta\": 39.99,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"],\r\n  \"categoria\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/producto/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"producto",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/cliente/2",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"cliente",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Cliente",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/cliente/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"cliente",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Add Pedido",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{ \r\n    \"idCliente\": 1, \r\n    \"lineasPedido\": \r\n        [\r\n            { \"idProducto\": 1, \"cantidad\": 1 },\r\n            { \"idProducto\": 3, \"cantidad\": 2 }\r\n        ] \r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Find All Producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/producto/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"producto",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{BASE_URL}}/pedido/",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"pedido",
-						""
-					]
+				{
+					"name": "Find By Id Producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/producto/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"producto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Ensalada\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Una rica ensalada\",\r\n  \"precio\": 20.15,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"],\r\n  \"categoria\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/producto/4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"producto",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/producto/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"producto",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Find All Pedido",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/pedido/",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"pedido",
-						""
-					]
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Add Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Alexander\",\r\n    \"email\": \"correo@correo.com\",\r\n    \"telefono\": \"909090\",\r\n    \"pin\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/cliente/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cliente",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cliente/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cliente",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Id Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cliente/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Pepep\",\r\n    \"email\": \"correo@correo.com\",\r\n    \"telefono\": \"909090\",\r\n    \"pin\": 4211\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/cliente/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cliente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cliente/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Find By Id Pedido",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/pedido/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"pedido",
-						"1"
-					]
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Add Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"idCliente\": 1, \r\n    \"lineasPedido\": \r\n        [\r\n            { \"idProducto\": 1, \"cantidad\": 1 },\r\n            { \"idProducto\": 3, \"cantidad\": 2 }\r\n        ] \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/pedido/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"pedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All Pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/pedido/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"pedido",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Id Pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/pedido/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"pedido",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete LineaPedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/pedido/1/del/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"pedido",
+								"1",
+								"del",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Cantidad LineaPedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/pedido/2/mod/3/cant/4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"pedido",
+								"2",
+								"mod",
+								"3",
+								"cant",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Pedido By Adding Producto and Cantidad",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/pedido/1/add/2/cant/6",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"pedido",
+								"1",
+								"add",
+								"2",
+								"cant",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/pedido/6",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"pedido",
+								"6"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete LineaPedido",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/pedido/1/del/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"pedido",
-						"1",
-						"del",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Modify Cantidad LineaPedido",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/pedido/1/mod/1/cant/4",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"pedido",
-						"1",
-						"mod",
-						"1",
-						"cant",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Modify Pedido By Adding Producto and Cantidad",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/pedido/1/add/2/cant/6",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"pedido",
-						"1",
-						"add",
-						"2",
-						"cant",
-						"6"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Pedido",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{BASE_URL}}/pedido/1",
-					"host": [
-						"{{BASE_URL}}"
-					],
-					"path": [
-						"pedido",
-						"1"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [

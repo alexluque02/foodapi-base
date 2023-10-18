@@ -28,7 +28,7 @@ public class PedidoServicio {
     public Pedido add(AddPedidoDto nuevo) {
         Pedido p = new Pedido();
 
-        if (nuevo != null) {
+        if (nuevo != null && nuevo.lineasPedido() != null && nuevo.idCliente() != null) {
             Optional<Cliente> cliente = clienteRepositorio.findById(nuevo.idCliente());
 
             if (cliente.isPresent()) {
@@ -44,6 +44,8 @@ public class PedidoServicio {
                         lineaPedido.setCantidad(linea.cantidad());
                         lineaPedido.setPrecioUnitario(lineaPedido.getProducto().getPrecio());
                         p.addLineaPedido(lineaPedido);
+                    }else{
+                        return null; //Para que no puedan añadirse productos inexistentes a las líneas de pedido
                     }
                 }
                 return repositorio.save(p);
@@ -72,7 +74,6 @@ public class PedidoServicio {
                         .findFirst();
                 if (first.isPresent()){
                     LineaPedido lineaAEliminar = first.get();
-                    //p.removeLineaPedido(lineaAEliminar);
                     lineas.remove(lineaAEliminar);
                     return repositorio.save(p);
                 }
@@ -92,8 +93,7 @@ public class PedidoServicio {
                         .findFirst();
                 if (first.isPresent()){
                     LineaPedido lineaAModificar = first.get();
-                    if (lineaAModificar != null)
-                        lineaAModificar.setCantidad(cantidad);
+                    lineaAModificar.setCantidad(cantidad);
                     return repositorio.save(pedido.get());
                 }
             }

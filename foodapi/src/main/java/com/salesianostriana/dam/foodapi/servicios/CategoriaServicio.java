@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.foodapi.servicios;
 
 import com.salesianostriana.dam.foodapi.dto.categoria.CategoriaDto;
+import com.salesianostriana.dam.foodapi.dto.categoria.EditCategoriaDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.repos.CategoriaRepositorio;
 import com.salesianostriana.dam.foodapi.repos.ProductoRepositorio;
@@ -19,14 +20,16 @@ public class CategoriaServicio {
     private final CategoriaRepositorio repositorio;
     private final ProductoRepositorio repositorioProducto;
 
-    public Categoria add(CategoriaDto nueva){
+    public Categoria add(EditCategoriaDto nueva){
         Categoria c= new Categoria();
 
-        if(nueva != null) {//Preguntar si poniendo el id tiene que dar fallo o no
+        if(nueva != null && nueva.nombre() != null) {
+            //El nombre no puede estar vacío
             c.setNombre(nueva.nombre());
+            return repositorio.save(c);
         }
 
-        return repositorio.save(c);
+        return null;
     }
 
 
@@ -42,10 +45,10 @@ public class CategoriaServicio {
         return repositorioProducto.countProductosByCategoria(c);
     }
 
-    public Categoria edit(Long id, CategoriaDto editar){
+    public Categoria edit(Long id, EditCategoriaDto editar){
         Optional<Categoria> categoriaOptional = findById(id);
 
-        if (categoriaOptional.isPresent()) {
+        if (categoriaOptional.isPresent() && editar.nombre() != null) {
             Categoria categoria = categoriaOptional.get();
             categoria.setNombre(editar.nombre());
             return repositorio.save(categoria);

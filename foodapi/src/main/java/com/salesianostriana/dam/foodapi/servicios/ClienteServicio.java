@@ -19,13 +19,16 @@ public class ClienteServicio {
 
     public Cliente add(EditClienteDto nuevo){
         Cliente c = new Cliente();
-        if(c!=null){
+        if(nuevo!=null && nuevo.nombre() != null && nuevo.email() != null
+        && nuevo.telefono() != null && nuevo.pin() != 0){
+            //Un cliente debería tener proporcionar obligatoriamente todos los datos
             c.setNombre(nuevo.nombre());
             c.setEmail(nuevo.email());
             c.setTelefono(nuevo.telefono());
             c.setPin(nuevo.pin());
+            return repositorio.save(c);
         }
-        return repositorio.save(c);
+        return null;
     }
 
     public List<Cliente> findAll(){
@@ -38,7 +41,9 @@ public class ClienteServicio {
 
     public Cliente edit(Long id, EditClienteDto editar){
         Optional<Cliente> cliente = findById(id);
-        if(cliente.isPresent()){
+        if(cliente.isPresent() && editar.nombre() != null && editar.email() != null
+                && editar.telefono() != null && editar.pin() != 0){
+            //Para editar debemos tener en cuenta todos los datos del cliente
             Cliente c = cliente.get();
             c.setNombre(editar.nombre());
             c.setEmail(editar.email());

@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.foodapi.dto.producto;
 
+import com.salesianostriana.dam.foodapi.dto.categoria.CategoriaDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
 
@@ -13,7 +14,7 @@ public record FindProductoDto(
         double precio,
         double precioOferta,
         List<String> tags,
-        Categoria categoria
+        CategoriaDto categoria
 ) {
 
     public static FindProductoDto of(Producto p){
@@ -25,7 +26,7 @@ public record FindProductoDto(
                 p.getPrecio(),
                 p.getPrecioOferta(),
                 p.getTags(),
-                p.getCategoria()
+                CategoriaDto.of(p.getCategoria())
         );
     }
 

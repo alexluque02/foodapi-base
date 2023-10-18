@@ -6,7 +6,6 @@ import java.util.List;
 
 public record EditProductoDto(
 
-        Long id,
         String nombre,
         String imagen,
         String descripcion,
@@ -18,7 +17,6 @@ public record EditProductoDto(
 
     public static EditProductoDto of(Producto p){
         return new EditProductoDto(
-                p.getId(),
                 p.getNombre(),
                 p.getImagen(),
                 p.getDescripcion(),

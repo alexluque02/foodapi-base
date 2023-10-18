@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Builder
 @Entity
 @Data
 @NoArgsConstructor

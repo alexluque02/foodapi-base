@@ -1,9 +1,11 @@
 package com.salesianostriana.dam.foodapi.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.salesianostriana.dam.foodapi.dto.pedido.PedidoDto;
 import com.salesianostriana.dam.foodapi.dto.producto.EditProductoDto;
 import com.salesianostriana.dam.foodapi.dto.producto.FindProductoDto;
 import com.salesianostriana.dam.foodapi.dto.producto.ProductoDto;
+import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.modelo.ProductoView.*;
 import com.salesianostriana.dam.foodapi.servicios.ProductoServicio;
@@ -45,7 +47,10 @@ public class ProductoController {
     @JsonView({ ProductoSinCategoria.class })
     public ResponseEntity<ProductoDto> addProducto(@RequestBody EditProductoDto nuevo) {
         Producto p = servicio.add(nuevo);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ProductoDto.of(p));
+        if(p!=null){
+            return ResponseEntity.status(HttpStatus.CREATED).body(ProductoDto.of(p));
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 
     @Operation(summary = "Buscar un producto por su id")

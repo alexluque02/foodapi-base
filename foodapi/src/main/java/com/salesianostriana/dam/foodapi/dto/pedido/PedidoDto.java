@@ -52,7 +52,7 @@ public record PedidoDto(
                 );
         }
 
-        public static PedidoDto of2(Pedido p){
+        public static PedidoDto ofAuxiliar(Pedido p){
                 return new PedidoDto(
                         p.getId(),
                         p.getFecha(),

@@ -53,7 +53,12 @@ public class ClienteController {
     @JsonView({ClienteList.class})
     public ResponseEntity<ClienteDto> addCliente(@RequestBody EditClienteDto nuevo){
         Cliente c=servicio.add(nuevo);
-        return ResponseEntity.status(HttpStatus.CREATED).body(ClienteDto.of(c));
+        if(c!=null){
+            return ResponseEntity.status(HttpStatus.CREATED).body(ClienteDto.of(c));
+        }
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
     }
 
     @Operation(summary = "Lista todos los clientes")

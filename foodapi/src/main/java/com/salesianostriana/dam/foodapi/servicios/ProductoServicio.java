@@ -20,7 +20,8 @@ public class ProductoServicio {
 
     public Producto add(EditProductoDto nuevo) {
         Producto p = new Producto();
-        if (nuevo != null) {
+        if (nuevo != null && nuevo.nombre() != null) {
+            //El producto deberá tener al menos un nombre
             p.setNombre(nuevo.nombre());
             p.setImagen(nuevo.imagen());
             p.setPrecio(nuevo.precio());
@@ -28,13 +29,16 @@ public class ProductoServicio {
             p.setPrecioOferta(nuevo.precioOferta());
             p.setTags(nuevo.tags());
             Long id = nuevo.categoria();
-            if (categoriaRepositorio.findById(id).isPresent()) {
-                p.setCategoria(categoriaRepositorio.findById(id).get());
-            } else {
-                p.setCategoria(null);
+            if(id != null){
+                if (categoriaRepositorio.findById(id).isPresent()) {
+                    p.setCategoria(categoriaRepositorio.findById(id).get());
+                } else {
+                    p.setCategoria(null);
+                }
             }
+            return repositorio.save(p);
         }
-        return repositorio.save(p);
+        return null;
     }
 
     public Optional<Producto> findById(Long id) {
@@ -48,7 +52,8 @@ public class ProductoServicio {
     public Producto edit(Long id, EditProductoDto editar){
         Optional<Producto> productoOptional = findById(id);
 
-            if (productoOptional.isPresent()) {
+            if (productoOptional.isPresent() && editar.nombre() != null) {
+                //Al menos tiene que proporcionar un nombre válido
                 Producto producto = productoOptional.get();
                 producto.setNombre(editar.nombre());
                 producto.setImagen(editar.imagen());

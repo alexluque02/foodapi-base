@@ -6,7 +6,6 @@ import com.salesianostriana.dam.foodapi.dto.pedido.PedidoDetailsDto;
 import com.salesianostriana.dam.foodapi.dto.pedido.PedidoDto;
 import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import com.salesianostriana.dam.foodapi.modelo.PedidoView.*;
-import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.servicios.PedidoServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -17,7 +16,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -127,7 +125,7 @@ public class PedidoController {
 
         return ResponseEntity.ok(
                 data.stream()
-                        .map(PedidoDto::of2)
+                        .map(PedidoDto::ofAuxiliar)
                         .toList()
         );
     }

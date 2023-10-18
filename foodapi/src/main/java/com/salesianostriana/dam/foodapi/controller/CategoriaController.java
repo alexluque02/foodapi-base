@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.foodapi.controller;
 
 import com.salesianostriana.dam.foodapi.dto.categoria.CategoriaDto;
+import com.salesianostriana.dam.foodapi.dto.categoria.EditCategoriaDto;
 import com.salesianostriana.dam.foodapi.dto.categoria.FindCategoriaDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
@@ -46,11 +47,15 @@ public class CategoriaController {
                     content = @Content),
     })
     @PostMapping("/")
-    public ResponseEntity<CategoriaDto> addCategoria(@RequestBody CategoriaDto nuevo){
+    public ResponseEntity<CategoriaDto> addCategoria(@RequestBody EditCategoriaDto nuevo){
 
         Categoria c = servicio.add(nuevo);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevo.of(c));
+        if(c!=null){
+            return ResponseEntity.status(HttpStatus.CREATED).body(CategoriaDto.of(c));
+        }
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 
     @Operation(summary = "Lista todas las categorías")
@@ -126,7 +131,7 @@ public class CategoriaController {
                     content = @Content),
     })
     @PutMapping("/{id}")
-    public ResponseEntity<CategoriaDto> editCategoria(@PathVariable Long id, @RequestBody CategoriaDto editar){
+    public ResponseEntity<CategoriaDto> editCategoria(@PathVariable Long id, @RequestBody EditCategoriaDto editar){
         Categoria c = servicio.edit(id, editar);
         if (c != null) {
             return ResponseEntity.ok(CategoriaDto.of(c));
