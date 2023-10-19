@@ -66,7 +66,7 @@ public record PedidoDto(
                                 .distinct()
                                 .count(),
                         (int)p.getLineasPedido().stream()
-                                .mapToDouble(lineaPedido -> lineaPedido.getCantidad())
+                                .mapToDouble(LineaPedido::getCantidad)
                                 .sum()
                 );
         }
