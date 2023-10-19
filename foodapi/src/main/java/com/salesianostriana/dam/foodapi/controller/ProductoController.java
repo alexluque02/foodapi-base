@@ -197,7 +197,8 @@ public class ProductoController {
     @Operation(summary = "Borra un producto")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204 No Content",
-                    description = "Se ha encontrado la categoría y se ha borrado con éxito",
+                    description = "Se ha encontrado el producto y se han borrado tanto el producto como sus líneas de " +
+                            "pedido asociadas con éxito",
                     content = @Content),
             @ApiResponse(responseCode = "404 Not Found",
                     description = "El producto no se ha encontrado",

@@ -1,12 +1,17 @@
 package com.salesianostriana.dam.foodapi.servicios;
 
 import com.salesianostriana.dam.foodapi.dto.producto.EditProductoDto;
+import com.salesianostriana.dam.foodapi.modelo.LineaPedido;
+import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.repos.CategoriaRepositorio;
+import com.salesianostriana.dam.foodapi.repos.PedidoRepositorio;
 import com.salesianostriana.dam.foodapi.repos.ProductoRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 import java.util.List;
@@ -17,6 +22,7 @@ public class ProductoServicio {
 
     private final ProductoRepositorio repositorio;
     private final CategoriaRepositorio categoriaRepositorio;
+    private final PedidoRepositorio pedidoRepositorio;
 
     public Producto add(EditProductoDto nuevo) {
         Producto p = new Producto();
@@ -75,6 +81,14 @@ public class ProductoServicio {
     public Producto delete(Long id){
         Optional<Producto> producto = repositorio.findById(id);
         if (producto.isPresent()) {
+            List <Pedido> pedidos = pedidoRepositorio.pedidosConProductoDeterminado(producto.get());
+            for (Pedido pedido : pedidos) {
+                List<LineaPedido> lineaPedidos = pedido.getLineasPedido();
+                lineaPedidos.removeIf(lp -> Objects.equals(lp.getProducto().getId(), id));
+                if (pedido.getLineasPedido().isEmpty()) {
+                    pedidoRepositorio.delete(pedido);
+                }
+            }
             repositorio.delete(producto.get());
             return producto.get();
         }
