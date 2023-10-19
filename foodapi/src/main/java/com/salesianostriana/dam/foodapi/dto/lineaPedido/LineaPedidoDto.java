@@ -24,8 +24,20 @@ public record LineaPedidoDto(
                 lp.getCodLinea(),
                 ProductoListDto.of(lp.getProducto()),
                 lp.getCantidad(),
-                lp.getProducto().getPrecio(),
-                lp.getProducto().getPrecio()*lp.getCantidad()
+                getprecioUnitario(lp),
+                getSubtotal(lp)
         );
+    }
+
+    public static double getprecioUnitario(LineaPedido lp){
+        return lp.getProducto().getPrecioOferta()>0?
+                lp.getProducto().getPrecioOferta() :
+                lp.getProducto().getPrecio();
+    }
+
+    public static double getSubtotal(LineaPedido lp){
+        return lp.getProducto().getPrecioOferta()>0?
+                lp.getProducto().getPrecioOferta()* lp.getCantidad() :
+                lp.getProducto().getPrecio()*lp.getCantidad();
     }
 }

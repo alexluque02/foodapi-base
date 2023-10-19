@@ -19,8 +19,8 @@ public record LineaPedidoDetailsDto(
                 lp.getCodLinea(),
                 ProductoDetailsDto.of(lp.getProducto()),
                 lp.getCantidad(),
-                lp.getProducto().getPrecio(),
-                lp.getProducto().getPrecio()*lp.getCantidad()
+                LineaPedidoDto.getprecioUnitario(lp),
+                LineaPedidoDto.getSubtotal(lp)
         );
     }
 

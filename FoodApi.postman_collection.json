@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Pepito\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Pizzas\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -129,7 +129,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Producto de ejemplo\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Este es un producto de ejemplo\",\r\n  \"precio\": 49.99,\r\n  \"precioOferta\": 39.99,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"],\r\n  \"categoria\": 1\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Burger XTREME\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Una hamburguesa muy buena\",\r\n  \"precio\": 12.99,\r\n  \"tags\": [\"queso\", \"ternera\", \"pan\"],\r\n  \"categoria\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -192,7 +192,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Ensalada\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Una rica ensalada\",\r\n  \"precio\": 20.15,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"],\r\n  \"categoria\" : 2\r\n}",
+							"raw": "{\r\n  \"nombre\": \"Ensalada\",\r\n  \"imagen\": \"imagen.jpg\",\r\n  \"descripcion\": \"Una rica ensalada\",\r\n  \"precio\": 9.15,\r\n   \"precioOferta\": 4.90,\r\n  \"tags\": [\"electrónica\", \"oferta\", \"gadgets\"],\r\n  \"categoria\" : 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -200,13 +200,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/producto/4",
+							"raw": "{{BASE_URL}}/producto/1",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"producto",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -399,13 +399,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/pedido/2",
+							"raw": "{{BASE_URL}}/pedido/3",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"pedido",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -481,13 +481,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/pedido/6",
+							"raw": "{{BASE_URL}}/pedido/3",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"pedido",
-								"6"
+								"3"
 							]
 						}
 					},

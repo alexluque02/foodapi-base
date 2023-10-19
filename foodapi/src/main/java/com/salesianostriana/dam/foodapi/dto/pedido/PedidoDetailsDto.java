@@ -24,8 +24,7 @@ public record PedidoDetailsDto(
                         p.getId(),
                         p.getFecha(),
                         p.getLineasPedido().stream()
-                                .mapToDouble(lineaPedido -> lineaPedido.getCantidad()*
-                                        lineaPedido.getPrecioUnitario())
+                                .mapToDouble(LineaPedidoDto::getSubtotal)
                                 .sum(),
                         ClienteDetailsDto.of(p.getCliente()),
                         p.getLineasPedido().stream()

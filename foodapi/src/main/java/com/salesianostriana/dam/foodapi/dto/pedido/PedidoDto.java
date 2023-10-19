@@ -42,8 +42,7 @@ public record PedidoDto(
                         p.getId(),
                         p.getFecha(),
                         p.getLineasPedido().stream()
-                                .mapToDouble(lineaPedido -> lineaPedido.getCantidad()*
-                                        lineaPedido.getProducto().getPrecio())
+                                .mapToDouble(LineaPedidoDto::getSubtotal)
                                 .sum(),
                         ClienteListDto.of(p.getCliente()),
                         p.getLineasPedido().stream()
@@ -57,8 +56,7 @@ public record PedidoDto(
                         p.getId(),
                         p.getFecha(),
                         p.getLineasPedido().stream()
-                                .mapToDouble(lineaPedido -> lineaPedido.getCantidad()*
-                                        lineaPedido.getPrecioUnitario())
+                                .mapToDouble(LineaPedidoDto::getSubtotal)
                                 .sum(),
                         ClienteListDto.of(p.getCliente()),
                         (int)p.getLineasPedido().stream()

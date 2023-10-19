@@ -2,6 +2,7 @@ package com.salesianostriana.dam.foodapi.dto.pedido;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.salesianostriana.dam.foodapi.dto.lineaPedido.LineaPedidoDto;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.*;
 import com.salesianostriana.dam.foodapi.modelo.LineaPedido;
 import com.salesianostriana.dam.foodapi.modelo.Pedido;
@@ -27,15 +28,14 @@ public record PedidoClienteListDto(
                 p.getId(),
                 p.getFecha(),
                 p.getLineasPedido().stream()
-                        .mapToDouble(lineaPedido -> lineaPedido.getCantidad()*
-                                lineaPedido.getProducto().getPrecio())
+                        .mapToDouble(LineaPedidoDto::getSubtotal)
                         .sum(),
                 (int)p.getLineasPedido().stream()
                         .map(LineaPedido::getProducto)
                         .distinct()
                         .count(),
                 (int)p.getLineasPedido().stream()
-                        .mapToDouble(lineaPedido -> lineaPedido.getCantidad())
+                        .mapToDouble(LineaPedido::getCantidad)
                         .sum()
         );
     }
