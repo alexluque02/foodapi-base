@@ -201,16 +201,12 @@ public class ClienteController {
                                     """) }) })
     })
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCliente(@PathVariable Long id){
-        Map<String, String> response = servicio.delete(id);
+    public ResponseEntity<?> deleteCliente(@PathVariable Long id) {
+        Cliente c = servicio.delete(id);
+        if (c != null)
+            return ResponseEntity.noContent().build();
 
-        if(response.containsKey("error")){
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-        }else if (response.containsKey("not found")){
-            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-        }else{
-            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
-        }
+        return ResponseEntity.notFound().build();
     }
 
 }

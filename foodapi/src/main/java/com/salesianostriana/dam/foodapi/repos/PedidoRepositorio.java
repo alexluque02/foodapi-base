@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.foodapi.repos;
 
+import com.salesianostriana.dam.foodapi.modelo.Cliente;
 import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,4 +13,7 @@ public interface PedidoRepositorio extends JpaRepository<Pedido, Long> {
 
     @Query("SELECT DISTINCT p FROM Pedido p JOIN p.lineasPedido lp WHERE lp.producto = :producto")
     List<Pedido> pedidosConProductoDeterminado(@Param("producto") Producto producto);
+
+    @Query("SELECT p FROM Pedido p WHERE cliente = :cliente")
+    List<Pedido> pedidosDeUnCliente(@Param("cliente")Cliente cliente);
 }
