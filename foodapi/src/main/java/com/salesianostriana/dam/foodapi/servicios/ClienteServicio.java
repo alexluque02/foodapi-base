@@ -2,7 +2,9 @@ package com.salesianostriana.dam.foodapi.servicios;
 
 import com.salesianostriana.dam.foodapi.dto.cliente.EditClienteDto;
 import com.salesianostriana.dam.foodapi.modelo.Cliente;
+import com.salesianostriana.dam.foodapi.modelo.Pedido;
 import com.salesianostriana.dam.foodapi.repos.ClienteRepositorio;
+import com.salesianostriana.dam.foodapi.repos.PedidoRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class ClienteServicio {
 
     private final ClienteRepositorio repositorio;
+    private final PedidoRepositorio pedidoRepositorio;
 
     public Cliente add(EditClienteDto nuevo){
         Cliente c = new Cliente();
@@ -54,16 +57,15 @@ public class ClienteServicio {
         return null;
     }
 
-    public Map<String, String> delete(Long id){
-        Map<String, String> response = new HashMap<>();
-        Cliente cliente= repositorio.findById(id).orElse(null);
-        if (cliente != null && cliente.getPedidos().isEmpty()) {
-            repositorio.delete(cliente);
-        } else if(cliente != null){
-            response.put("error", "No se puede borrar un cliente que tiene pedidos asociados.");
-        } else {
-            response.put("not found", "No se ha encontrado el cliente");
+    public Cliente delete(Long id){
+        Optional <Cliente> cliente= repositorio.findById(id);
+        if (cliente.isPresent()) {
+            List<Pedido> pedidos = pedidoRepositorio.pedidosDeUnCliente(cliente.get());
+            pedidos.forEach(pedidoRepositorio::delete);
+            cliente.get().setPedidos(null);
+            repositorio.delete(cliente.get());
+            return cliente.get();
         }
-        return response;
+        return null;
     }
 }
