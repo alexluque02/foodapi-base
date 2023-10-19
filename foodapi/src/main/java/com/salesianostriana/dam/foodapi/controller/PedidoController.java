@@ -39,33 +39,33 @@ public class PedidoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
                             @ExampleObject(value = """
                                     {
-                                        "id": 2,
-                                        "fecha": "17/10/2023 19:18:24",
-                                        "importe": 149.97000000000003,
+                                        "id": 4,
+                                        "fecha": "19/10/2023 16:53:40",
+                                        "importe": 33.97,
                                         "cliente": {
                                             "id": 1,
-                                            "nombre": "Alexander"
+                                            "nombre": "Juan Pérez"
                                         },
                                         "lineasPedido": [
                                             {
-                                                "codLinea": 2,
+                                                "codLinea": 5,
                                                 "producto": {
                                                     "id": 1,
-                                                    "nombre": "Producto de ejemplo"
+                                                    "nombre": "Ensalada de Espinacas"
                                                 },
                                                 "cantidad": 1,
-                                                "precioUnitario": 49.99,
-                                                "subtotal": 49.99
+                                                "precioUnitario": 9.99,
+                                                "subtotal": 9.99
                                             },
                                             {
-                                                "codLinea": 3,
+                                                "codLinea": 6,
                                                 "producto": {
                                                     "id": 3,
-                                                    "nombre": "Producto de ejemplo"
+                                                    "nombre": "Spaghetti Carbonara"
                                                 },
                                                 "cantidad": 2,
-                                                "precioUnitario": 49.99,
-                                                "subtotal": 99.98
+                                                "precioUnitario": 11.99,
+                                                "subtotal": 23.98
                                             }
                                         ]
                                     }
@@ -88,29 +88,51 @@ public class PedidoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
                             @ExampleObject(value = """
                                     [
-                                         {
-                                             "id": 1,
-                                             "fecha": "17/10/2023 19:22:34",
-                                             "importe": 149.97000000000003,
-                                             "cliente": {
-                                                 "id": 1,
-                                                 "nombre": "Alexander"
-                                             },
-                                             "cantidadProductosDiferentes": 2,
-                                             "cantidadTotal": 3
-                                         },
-                                         {
-                                             "id": 2,
-                                             "fecha": "17/10/2023 19:22:36",
-                                             "importe": 149.97000000000003,
-                                             "cliente": {
-                                                 "id": 1,
-                                                 "nombre": "Alexander"
-                                             },
-                                             "cantidadProductosDiferentes": 2,
-                                             "cantidadTotal": 3
-                                         }
-                                     ]
+                                          {
+                                              "id": 1,
+                                              "fecha": "19/10/2023 16:53:24",
+                                              "importe": 17.98,
+                                              "cliente": {
+                                                  "id": 1,
+                                                  "nombre": "Juan Pérez"
+                                              },
+                                              "cantidadProductosDiferentes": 1,
+                                              "cantidadTotal": 2
+                                          },
+                                          {
+                                              "id": 2,
+                                              "fecha": "19/10/2023 16:53:24",
+                                              "importe": 54.95,
+                                              "cliente": {
+                                                  "id": 3,
+                                                  "nombre": "Pedro Gómez"
+                                              },
+                                              "cantidadProductosDiferentes": 2,
+                                              "cantidadTotal": 5
+                                          },
+                                          {
+                                              "id": 3,
+                                              "fecha": "19/10/2023 16:53:24",
+                                              "importe": 9.99,
+                                              "cliente": {
+                                                  "id": 2,
+                                                  "nombre": "María López"
+                                              },
+                                              "cantidadProductosDiferentes": 1,
+                                              "cantidadTotal": 1
+                                          },
+                                          {
+                                              "id": 4,
+                                              "fecha": "19/10/2023 16:53:40",
+                                              "importe": 33.97,
+                                              "cliente": {
+                                                  "id": 1,
+                                                  "nombre": "Juan Pérez"
+                                              },
+                                              "cantidadProductosDiferentes": 2,
+                                              "cantidadTotal": 3
+                                          }
+                                      ]
                                     """) }) }),
             @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido encontrar ningún pedido", content = @Content)
     })
@@ -136,37 +158,26 @@ public class PedidoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
                             @ExampleObject(value = """
                                     {
-                                        "id": 1,
-                                        "fecha": "17/10/2023 19:51:01",
-                                        "importe": 149.97000000000003,
+                                        "id": 3,
+                                        "fecha": "19/10/2023 16:53:24",
+                                        "importe": 9.99,
                                         "cliente": {
-                                            "id": 1,
-                                            "nombre": "Alexander",
-                                            "email": "correo@correo.com",
-                                            "telefono": "909090"
+                                            "id": 2,
+                                            "nombre": "María López",
+                                            "email": "maria@example.com",
+                                            "telefono": "987-654-3210"
                                         },
                                         "lineasPedido": [
                                             {
-                                                "codLinea": 1,
+                                                "codLinea": 4,
                                                 "producto": {
                                                     "id": 1,
-                                                    "nombre": "Producto de ejemplo",
-                                                    "categoria": "Sin categoría"
+                                                    "nombre": "Ensalada de Espinacas",
+                                                    "categoria": "Veggie"
                                                 },
                                                 "cantidad": 1,
-                                                "precioUnitario": 49.99,
-                                                "subtotal": 49.99
-                                            },
-                                            {
-                                                "codLinea": 2,
-                                                "producto": {
-                                                    "id": 3,
-                                                    "nombre": "Producto de ejemplo",
-                                                    "categoria": "Sin categoría"
-                                                },
-                                                "cantidad": 2,
-                                                "precioUnitario": 49.99,
-                                                "subtotal": 99.98
+                                                "precioUnitario": 9.99,
+                                                "subtotal": 9.99
                                             }
                                         ]
                                     }
@@ -188,26 +199,26 @@ public class PedidoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
                             @ExampleObject(value = """
                                     {
-                                        "id": 1,
-                                        "fecha": "18/10/2023 09:48:18",
-                                        "importe": 49.99,
-                                        "cliente": {
-                                            "id": 1,
-                                            "nombre": "Alexander"
-                                        },
-                                        "lineasPedido": [
-                                            {
-                                                "codLinea": 1,
-                                                "producto": {
-                                                    "id": 1,
-                                                    "nombre": "Producto de ejemplo"
-                                                },
-                                                "cantidad": 1,
-                                                "precioUnitario": 49.99,
-                                                "subtotal": 49.99
-                                            }
-                                        ]
-                                    }
+                                         "id": 2,
+                                         "fecha": "19/10/2023 16:53:24",
+                                         "importe": 21.98,
+                                         "cliente": {
+                                             "id": 3,
+                                             "nombre": "Pedro Gómez"
+                                         },
+                                         "lineasPedido": [
+                                             {
+                                                 "codLinea": 3,
+                                                 "producto": {
+                                                     "id": 5,
+                                                     "nombre": "Burger BBQ"
+                                                 },
+                                                 "cantidad": 2,
+                                                 "precioUnitario": 10.99,
+                                                 "subtotal": 21.98
+                                             }
+                                         ]
+                                     }
                                     """) }) }),
             @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido eliminar la línea de pedido", content = @Content)
     })
@@ -229,26 +240,26 @@ public class PedidoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
                             @ExampleObject(value = """
                                     {
-                                         "id": 1,
-                                         "fecha": "18/10/2023 10:15:10",
-                                         "importe": 199.96,
-                                         "cliente": {
-                                             "id": 1,
-                                             "nombre": "Alexander"
-                                         },
-                                         "lineasPedido": [
-                                             {
-                                                 "codLinea": 1,
-                                                 "producto": {
-                                                     "id": 1,
-                                                     "nombre": "Producto de ejemplo"
-                                                 },
-                                                 "cantidad": 4,
-                                                 "precioUnitario": 49.99,
-                                                 "subtotal": 199.96
-                                             }
-                                         ]
-                                     }
+                                        "id": 2,
+                                        "fecha": "19/10/2023 16:53:24",
+                                        "importe": 43.96,
+                                        "cliente": {
+                                            "id": 3,
+                                            "nombre": "Pedro Gómez"
+                                        },
+                                        "lineasPedido": [
+                                            {
+                                                "codLinea": 3,
+                                                "producto": {
+                                                    "id": 5,
+                                                    "nombre": "Burger BBQ"
+                                                },
+                                                "cantidad": 4,
+                                                "precioUnitario": 10.99,
+                                                "subtotal": 43.96
+                                            }
+                                        ]
+                                    }
                                     """) }) }),
             @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido modificar la cantidad de productos de la línea de pedido", content = @Content)
     })
@@ -273,46 +284,26 @@ public class PedidoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
                             @ExampleObject(value = """
                                     {
-                                          "id": 1,
-                                          "fecha": "18/10/2023 10:49:08",
-                                          "importe": 449.91,
-                                          "cliente": {
-                                              "id": 1,
-                                              "nombre": "Alexander"
-                                          },
-                                          "lineasPedido": [
-                                              {
-                                                  "codLinea": 1,
-                                                  "producto": {
-                                                      "id": 1,
-                                                      "nombre": "Producto de ejemplo"
-                                                  },
-                                                  "cantidad": 1,
-                                                  "precioUnitario": 49.99,
-                                                  "subtotal": 49.99
-                                              },
-                                              {
-                                                  "codLinea": 2,
-                                                  "producto": {
-                                                      "id": 3,
-                                                      "nombre": "Producto de ejemplo"
-                                                  },
-                                                  "cantidad": 2,
-                                                  "precioUnitario": 49.99,
-                                                  "subtotal": 99.98
-                                              },
-                                              {
-                                                  "codLinea": 7,
-                                                  "producto": {
-                                                      "id": 1,
-                                                      "nombre": "Producto de ejemplo"
-                                                  },
-                                                  "cantidad": 6,
-                                                  "precioUnitario": 49.99,
-                                                  "subtotal": 299.94
-                                              }
-                                          ]
-                                      }
+                                        "id": 1,
+                                        "fecha": "19/10/2023 16:53:24",
+                                        "importe": 77.94,
+                                        "cliente": {
+                                            "id": 1,
+                                            "nombre": "Juan Pérez"
+                                        },
+                                        "lineasPedido": [
+                                            {
+                                                "codLinea": 7,
+                                                "producto": {
+                                                    "id": 2,
+                                                    "nombre": "Burger Vegetariana"
+                                                },
+                                                "cantidad": 6,
+                                                "precioUnitario": 12.99,
+                                                "subtotal": 77.94
+                                            }
+                                        ]
+                                    }
                                     """) }) }),
             @ApiResponse(responseCode = "404 Not Found", description = "No se ha podido agregar la línea de pedido", content = @Content)
     })

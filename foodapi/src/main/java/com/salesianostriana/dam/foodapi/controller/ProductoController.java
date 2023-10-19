@@ -40,7 +40,21 @@ public class ProductoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201 Created", description = "Se ha agregado un producto con éxito", content = {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
-                            @ExampleObject(value = "{'id': 1, 'nombre': 'Alex'}") }) }),
+                            @ExampleObject(value = """
+                                    {
+                                        "id": 9,
+                                        "nombre": "Burger XTREME",
+                                        "imagen": "imagen.jpg",
+                                        "descripcion": "Una hamburguesa muy buena",
+                                        "precio": 12.99,
+                                        "precioOferta": 0.0,
+                                        "tags": [
+                                            "queso",
+                                            "ternera",
+                                            "pan"
+                                        ]
+                                    }
+                                    """) }) }),
             @ApiResponse(responseCode = "400 Bad Request", description = "No se ha agregado ningún producto", content = @Content)
     })
     @PostMapping("/")
@@ -59,18 +73,21 @@ public class ProductoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
                             @ExampleObject(value = """
                                     {
-                                        "id": 1,
-                                        "nombre": "Producto de ejemplo",
-                                        "imagen": "imagen.jpg",
-                                        "descripcion": "Este es un producto de ejemplo",
-                                        "precio": 49.99,
-                                        "precioOferta": 39.99,
+                                        "id": 2,
+                                        "nombre": "Burger Vegetariana",
+                                        "imagen": "burger.jpg",
+                                        "descripcion": "Burger vegetariana con guarnición de papas fritas.",
+                                        "precio": 12.99,
+                                        "precioOferta": 0.0,
                                         "tags": [
-                                            "electrónica",
-                                            "oferta",
-                                            "gadgets"
+                                            "burger",
+                                            "veggie",
+                                            "papas fritas"
                                         ],
-                                        "categoria": {"id": 3, "Ensaladas" }
+                                        "categoria": {
+                                            "id": 1,
+                                            "nombre": "Veggie"
+                                        }
                                     }
                                     """) }) }),
             @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto con ese id", content = @Content)
@@ -88,63 +105,49 @@ public class ProductoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
                             @ExampleObject(value = """
                                         [
-                                             {
-                                                 "id": 1,
-                                                 "nombre": "Producto de ejemplo",
-                                                 "imagen": "imagen.jpg",
-                                                 "descripcion": "Este es un producto de ejemplo",
-                                                 "precio": 49.99,
-                                                 "precioOferta": 39.99,
-                                                 "tags": [
-                                                     "electrónica",
-                                                     "oferta",
-                                                     "gadgets"
-                                                 ],
-                                                 "categoria": "Sin categoría"
-                                             },
-                                             {
-                                                 "id": 2,
-                                                 "nombre": "Producto de ejemplo",
-                                                 "imagen": "imagen.jpg",
-                                                 "descripcion": "Este es un producto de ejemplo",
-                                                 "precio": 49.99,
-                                                 "precioOferta": 39.99,
-                                                 "tags": [
-                                                     "electrónica",
-                                                     "oferta",
-                                                     "gadgets"
-                                                 ],
-                                                 "categoria": "Veggie"
-                                             },
-                                             {
-                                                 "id": 3,
-                                                 "nombre": "Producto de ejemplo",
-                                                 "imagen": "imagen.jpg",
-                                                 "descripcion": "Este es un producto de ejemplo",
-                                                 "precio": 49.99,
-                                                 "precioOferta": 39.99,
-                                                 "tags": [
-                                                     "electrónica",
-                                                     "oferta",
-                                                     "gadgets"
-                                                 ],
-                                                 "categoria": "Carne"
-                                             },
-                                             {
-                                                 "id": 4,
-                                                 "nombre": "Producto de ejemplo",
-                                                 "imagen": "imagen.jpg",
-                                                 "descripcion": "Este es un producto de ejemplo",
-                                                 "precio": 49.99,
-                                                 "precioOferta": 39.99,
-                                                 "tags": [
-                                                     "electrónica",
-                                                     "oferta",
-                                                     "gadgets"
-                                                 ],
-                                                 "categoria": "Ensaladas"
-                                             }
-                                         ]
+                                            {
+                                                "id": 1,
+                                                "nombre": "Ensalada",
+                                                "imagen": "imagen.jpg",
+                                                "descripcion": "Una rica ensalada",
+                                                "precio": 9.15,
+                                                "precioOferta": 4.9,
+                                                "tags": [
+                                                    "electrónica",
+                                                    "oferta",
+                                                    "gadgets"
+                                                ],
+                                                "categoria": "Pasta"
+                                            },
+                                            {
+                                                "id": 2,
+                                                "nombre": "Burger Vegetariana",
+                                                "imagen": "burger.jpg",
+                                                "descripcion": "Burger vegetariana con guarnición de papas fritas.",
+                                                "precio": 12.99,
+                                                "precioOferta": 0.0,
+                                                "tags": [
+                                                    "burger",
+                                                    "veggie",
+                                                    "papas fritas"
+                                                ],
+                                                "categoria": "Veggie"
+                                            },
+                                            {
+                                                "id": 3,
+                                                "nombre": "Spaghetti Carbonara",
+                                                "imagen": "spaghetti.jpg",
+                                                "descripcion": "Spaghetti con salsa carbonara y panceta.",
+                                                "precio": 11.99,
+                                                "precioOferta": 0.0,
+                                                "tags": [
+                                                    "pasta",
+                                                    "italiana",
+                                                    "carbonara"
+                                                ],
+                                                "categoria": "Pasta"
+                                            }
+                                        ]
                                     """) }) }),
             @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningún producto", content = @Content)
     })
@@ -169,19 +172,22 @@ public class ProductoController {
                     @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
                             @ExampleObject(value = """
                                         {
-                                              "id": 1,
-                                              "nombre": "Ensalada",
-                                              "imagen": "imagen.jpg",
-                                              "descripcion": "Una rica ensalada",
-                                              "precio": 20.15,
-                                              "precioOferta": 0.0,
-                                              "tags": [
-                                                  "electrónica",
-                                                  "oferta",
-                                                  "gadgets"
-                                              ],
-                                              "categoria": null
-                                          }
+                                            "id": 1,
+                                            "nombre": "Ensalada",
+                                            "imagen": "imagen.jpg",
+                                            "descripcion": "Una rica ensalada",
+                                            "precio": 9.15,
+                                            "precioOferta": 4.9,
+                                            "tags": [
+                                                "lechuga",
+                                                "tomate",
+                                                "básica"
+                                            ],
+                                            "categoria": {
+                                                "id": 2,
+                                                "nombre": "Pasta"
+                                            }
+                                        }
                                     """) }) }),
             @ApiResponse(responseCode = "404 Not Found", description = "No se ha encontrado ningun producto", content = @Content)
     })
