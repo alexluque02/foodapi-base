@@ -18,7 +18,7 @@ import java.util.List;
 
 @SpringBootApplication
 @OpenAPIDefinition(info =
-@Info(description = "Una API de Comida",
+@Info(description = "Una API para gestionar los pedidos de comida de un restaurante",
 		version = "1.0",
 		contact = @Contact(email = "alexanderluquehoffrogge@gmail.com", name = "Alexander"),
 		license = @License(name = "FoodApi"),
