@@ -1,9 +1,10 @@
 package com.salesianostriana.dam.foodapi.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.salesianostriana.dam.foodapi.dto.categoria.CategoriaDto;
 import com.salesianostriana.dam.foodapi.dto.categoria.EditCategoriaDto;
-import com.salesianostriana.dam.foodapi.dto.categoria.FindCategoriaDto;
 import com.salesianostriana.dam.foodapi.modelo.Categoria;
+import com.salesianostriana.dam.foodapi.modelo.CategoriaView.*;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
 import com.salesianostriana.dam.foodapi.servicios.CategoriaServicio;
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,6 +48,7 @@ public class CategoriaController {
                     content = @Content),
     })
     @PostMapping("/")
+    @JsonView({CategoriaList.class})
     public ResponseEntity<CategoriaDto> addCategoria(@RequestBody EditCategoriaDto nuevo){
 
         Categoria c = servicio.add(nuevo);
@@ -79,6 +81,7 @@ public class CategoriaController {
                     content = @Content),
     })
     @GetMapping("/")
+    @JsonView({CategoriaList.class})
     public ResponseEntity<List<CategoriaDto>> findAllCategoria(){
         List<Categoria> data = servicio.findAll();
 
@@ -108,10 +111,11 @@ public class CategoriaController {
                     content = @Content),
     })
     @GetMapping("/{id}")
-    public ResponseEntity<FindCategoriaDto> findByIdCategoria(@PathVariable Long id){
+    @JsonView({CategoriaDetails.class})
+    public ResponseEntity<CategoriaDto> findByIdCategoria(@PathVariable Long id){
         Optional<Categoria> categoria = servicio.findById(id);
         return categoria.map(value -> ResponseEntity.ok(
-                FindCategoriaDto.of(value, servicio.countProductosByCategoria(value))
+                CategoriaDto.of(value, servicio.countProductosByCategoria(value))
         )).orElseGet(() -> ResponseEntity.notFound().build());
 
     }
@@ -131,6 +135,7 @@ public class CategoriaController {
                     content = @Content),
     })
     @PutMapping("/{id}")
+    @JsonView({CategoriaList.class})
     public ResponseEntity<CategoriaDto> editCategoria(@PathVariable Long id, @RequestBody EditCategoriaDto editar){
         Categoria c = servicio.edit(id, editar);
         if (c != null) {
