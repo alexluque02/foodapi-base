@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.foodapi.dto.pedido;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.salesianostriana.dam.foodapi.modelo.ClienteView.*;
 import com.salesianostriana.dam.foodapi.modelo.LineaPedido;
@@ -11,6 +12,7 @@ public record PedidoClienteListDto(
         @JsonView({ClienteComplete.class})
         Long id,
         @JsonView({ClienteComplete.class})
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime fecha,
         @JsonView({ClienteComplete.class})
         double importe,
