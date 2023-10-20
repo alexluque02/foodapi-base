@@ -3,7 +3,11 @@ Repositorio base para el proyecto FoodApi de 2º DAM - Salesianos Triana
 ![Logo Food Api Created By Alex](https://github.com/alexluque02/foodapi-base/assets/114216624/3e756d77-de4a-4296-a52a-1a2f837b4170)
 
 ## Descripción del proyecto
-Food-Api es una REST API desarrollada Spring Boot 3 para atender a las peticiones CRUD de entidades como Cliente, Pedido, Linea de Pedido, Producto y Categoría.
+Food-Api es una REST API desarrollada Spring Boot 3 para atender a las peticiones CRUD de entidades como Cliente, Pedido, Linea de Pedido, Producto y Categoría. 
+
+## Cómo utilizar la API REST
+Para poder ponerla en marcha, el usuario deberá disponer de Spring Boot 3 con JDK 17 instalado y al iniciar la API REST se podrán probar todos los Endpoints en Psotman (la colección de Postman también figura en el repositorio).
+La documentación de los Endpoints se podrá consultar a través de http://localhost:8080/swagger-ui/index.html una vez iniciado el proyecto.
 
 ## Tecnologías utilizadas
 - Java 17
