@@ -27,7 +27,8 @@ mvn spring-boot:run
 Esto abrirá un servidor de Spring Boot ej el puesto 8080 por defecto.
 
 ## Colección de Postman
-**[Descargar Colección de Postman](FoodApi.postman_collection.json)**
+- **[Descargar Colección de Postman](FoodApi.postman_collection.json)**
+- **[Descargar Colección de Postman importada desde Swagger](FoodApiImportadaSwagger.postman_collection)**
 
 ## Documentación
 La documentación de los Endpoints se podrá consultar a través de http://localhost:8080/swagger-ui/index.html una vez desplegado el proyecto en el puerto 8080.
