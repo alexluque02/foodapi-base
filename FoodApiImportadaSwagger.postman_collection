@@ -1,0 +1,2406 @@
+{
+	"info": {
+		"_postman_id": "336d4cd2-1242-4914-9d83-b61bd373e616",
+		"name": "API de Comida",
+		"description": "Una API para gestionar los pedidos de comida de un restaurante\n\nContact Support:\n Name: Alexander\n Email: alexanderluquehoffrogge@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30052609"
+	},
+	"item": [
+		{
+			"name": "producto",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Buscar un producto por su id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/producto/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"producto",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Se ha encontrado el producto",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/producto/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"producto",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"imagen\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"precioOferta\": \"<double>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoria\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"imagen\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"precioOferta\": \"<double>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoria\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    }\n  }\n]"
+								},
+								{
+									"name": "No se ha encontrado ningun producto con ese id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/producto/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"producto",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Editar producto",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"<string>\",\n  \"imagen\": \"<string>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"precioOferta\": \"<double>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categoria\": \"<long>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/producto/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"producto",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "No se ha encontrado ningun producto",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"nombre\": \"<string>\",\n  \"imagen\": \"<string>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"precioOferta\": \"<double>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categoria\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/producto/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"producto",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Se ha editado con éxito",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"nombre\": \"<string>\",\n  \"imagen\": \"<string>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"precioOferta\": \"<double>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categoria\": \"<long>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/producto/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"producto",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"imagen\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"precioOferta\": \"<double>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoria\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"imagen\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"precioOferta\": \"<double>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoria\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    }\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Borra un producto",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/producto/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"producto",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "El producto no se ha encontrado",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/producto/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"producto",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Se ha encontrado el producto y se han borrado tanto el producto como sus líneas de pedido asociadas con éxito",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/producto/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"producto",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los productos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/producto/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Se han encontrado productos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/producto/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"producto",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"imagen\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"precioOferta\": \"<double>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoria\": \"<string>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"imagen\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"precioOferta\": \"<double>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"categoria\": \"<string>\"\n  }\n]"
+						},
+						{
+							"name": "No se ha encontrado ningún producto",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/producto/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"producto",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Agrega un producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"<string>\",\n  \"imagen\": \"<string>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"precioOferta\": \"<double>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categoria\": \"<long>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/producto/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "No se ha agregado ningún producto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"<string>\",\n  \"imagen\": \"<string>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"precioOferta\": \"<double>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categoria\": \"<long>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/producto/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"producto",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Se ha agregado un producto con éxito",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"<string>\",\n  \"imagen\": \"<string>\",\n  \"descripcion\": \"<string>\",\n  \"precio\": \"<double>\",\n  \"precioOferta\": \"<double>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"categoria\": \"<long>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/producto/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"producto",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"imagen\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"precioOferta\": \"<double>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"imagen\": \"<string>\",\n    \"descripcion\": \"<string>\",\n    \"precio\": \"<double>\",\n    \"precioOferta\": \"<double>\",\n    \"tags\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "pedido",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "mod",
+							"item": [
+								{
+									"name": "{codLinea}",
+									"item": [
+										{
+											"name": "cant",
+											"item": [
+												{
+													"name": "{cant}",
+													"item": [
+														{
+															"name": "Modifica la cantidad de productos comprados en una línea de pedido",
+															"request": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/pedido/:id/mod/:codLinea/cant/:cant",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"pedido",
+																		":id",
+																		"mod",
+																		":codLinea",
+																		"cant",
+																		":cant"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "<long>",
+																			"description": "(Required) "
+																		},
+																		{
+																			"key": "codLinea",
+																			"value": "<long>",
+																			"description": "(Required) "
+																		},
+																		{
+																			"key": "cant",
+																			"value": "<integer>",
+																			"description": "(Required) "
+																		}
+																	]
+																}
+															},
+															"response": [
+																{
+																	"name": "Se ha modificado la cantidad con éxito",
+																	"originalRequest": {
+																		"method": "PUT",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/pedido/:id/mod/:codLinea/cant/:cant",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"pedido",
+																				":id",
+																				"mod",
+																				":codLinea",
+																				"cant",
+																				":cant"
+																			],
+																			"variable": [
+																				{
+																					"key": "id"
+																				},
+																				{
+																					"key": "codLinea"
+																				},
+																				{
+																					"key": "cant"
+																				}
+																			]
+																		}
+																	},
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  }\n]"
+																},
+																{
+																	"name": "No se ha podido modificar la cantidad de productos de la línea de pedido",
+																	"originalRequest": {
+																		"method": "PUT",
+																		"header": [],
+																		"url": {
+																			"raw": "{{baseUrl}}/pedido/:id/mod/:codLinea/cant/:cant",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"pedido",
+																				":id",
+																				"mod",
+																				":codLinea",
+																				"cant",
+																				":cant"
+																			],
+																			"variable": [
+																				{
+																					"key": "id"
+																				},
+																				{
+																					"key": "codLinea"
+																				},
+																				{
+																					"key": "cant"
+																				}
+																			]
+																		}
+																	},
+																	"_postman_previewlanguage": "text",
+																	"header": [],
+																	"cookie": [],
+																	"body": ""
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "del",
+							"item": [
+								{
+									"name": "{codLinea}",
+									"item": [
+										{
+											"name": "Elimina una línea de pedido del pedido",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/pedido/:id/del/:codLinea",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"pedido",
+														":id",
+														"del",
+														":codLinea"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "<long>",
+															"description": "(Required) "
+														},
+														{
+															"key": "codLinea",
+															"value": "<long>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Se ha eliminado la línea de pedido",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/pedido/:id/del/:codLinea",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"pedido",
+																":id",
+																"del",
+																":codLinea"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "codLinea"
+																}
+															]
+														}
+													},
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  }\n]"
+												},
+												{
+													"name": "No se ha podido eliminar la línea de pedido",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/pedido/:id/del/:codLinea",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"pedido",
+																":id",
+																"del",
+																":codLinea"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																},
+																{
+																	"key": "codLinea"
+																}
+															]
+														}
+													},
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "add",
+							"item": [
+								{
+									"name": "{prod}",
+									"item": [
+										{
+											"name": "cant",
+											"item": [
+												{
+													"name": "{cant}",
+													"item": [
+														{
+															"name": "Añade una línea de pedido nueva a un pedido",
+															"request": {
+																"method": "PUT",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "application/json"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/pedido/:id/add/:prod/cant/:cant",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"pedido",
+																		":id",
+																		"add",
+																		":prod",
+																		"cant",
+																		":cant"
+																	],
+																	"variable": [
+																		{
+																			"key": "id",
+																			"value": "<long>",
+																			"description": "(Required) "
+																		},
+																		{
+																			"key": "prod",
+																			"value": "<long>",
+																			"description": "(Required) "
+																		},
+																		{
+																			"key": "cant",
+																			"value": "<integer>",
+																			"description": "(Required) "
+																		}
+																	]
+																}
+															},
+															"response": [
+																{
+																	"name": "No se ha podido agregar la línea de pedido",
+																	"originalRequest": {
+																		"method": "PUT",
+																		"header": [],
+																		"url": {
+																			"raw": "{{baseUrl}}/pedido/:id/add/:prod/cant/:cant",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"pedido",
+																				":id",
+																				"add",
+																				":prod",
+																				"cant",
+																				":cant"
+																			],
+																			"variable": [
+																				{
+																					"key": "id"
+																				},
+																				{
+																					"key": "prod"
+																				},
+																				{
+																					"key": "cant"
+																				}
+																			]
+																		}
+																	},
+																	"_postman_previewlanguage": "text",
+																	"header": [],
+																	"cookie": [],
+																	"body": ""
+																},
+																{
+																	"name": "Se ha agregado con éxito la línea de pedido",
+																	"originalRequest": {
+																		"method": "PUT",
+																		"header": [
+																			{
+																				"key": "Accept",
+																				"value": "application/json"
+																			}
+																		],
+																		"url": {
+																			"raw": "{{baseUrl}}/pedido/:id/add/:prod/cant/:cant",
+																			"host": [
+																				"{{baseUrl}}"
+																			],
+																			"path": [
+																				"pedido",
+																				":id",
+																				"add",
+																				":prod",
+																				"cant",
+																				":cant"
+																			],
+																			"variable": [
+																				{
+																					"key": "id"
+																				},
+																				{
+																					"key": "prod"
+																				},
+																				{
+																					"key": "cant"
+																				}
+																			]
+																		}
+																	},
+																	"_postman_previewlanguage": "json",
+																	"header": [
+																		{
+																			"key": "Content-Type",
+																			"value": "application/json"
+																		}
+																	],
+																	"cookie": [],
+																	"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  }\n]"
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Busca un pedido por su id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pedido/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pedido",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Se han encontrado el pedido",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/pedido/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pedido",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\",\n      \"email\": \"<string>\",\n      \"telefono\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\",\n          \"categoria\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\",\n          \"categoria\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\",\n      \"email\": \"<string>\",\n      \"telefono\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\",\n          \"categoria\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\",\n          \"categoria\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  }\n]"
+								},
+								{
+									"name": "No se ha podido encontrar el pedido",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/pedido/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pedido",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Borra un pedido",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pedido/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pedido",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Se ha encontrado el pedido y se ha borrado con éxito",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/pedido/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pedido",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "El pedido no se ha encontrado",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/pedido/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"pedido",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los pedidos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/pedido/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pedido",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Se han encontrado pedidos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pedido/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pedido",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"cantidadProductosDiferentes\": \"<integer>\",\n    \"cantidadTotal\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"cantidadProductosDiferentes\": \"<integer>\",\n    \"cantidadTotal\": \"<integer>\"\n  }\n]"
+						},
+						{
+							"name": "No se ha podido encontrar ningún pedido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pedido/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pedido",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Agrega un pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idCliente\": \"<long>\",\n  \"lineasPedido\": [\n    {\n      \"idProducto\": \"<long>\",\n      \"cantidad\": \"<integer>\"\n    },\n    {\n      \"idProducto\": \"<long>\",\n      \"cantidad\": \"<integer>\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pedido/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pedido",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Se ha creado el pedido con éxito",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"idCliente\": \"<long>\",\n  \"lineasPedido\": [\n    {\n      \"idProducto\": \"<long>\",\n      \"cantidad\": \"<integer>\"\n    },\n    {\n      \"idProducto\": \"<long>\",\n      \"cantidad\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pedido/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pedido",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"fecha\": \"<dateTime>\",\n    \"importe\": \"<double>\",\n    \"cliente\": {\n      \"id\": \"<long>\",\n      \"nombre\": \"<string>\"\n    },\n    \"lineasPedido\": [\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      },\n      {\n        \"codLinea\": \"<long>\",\n        \"producto\": {\n          \"id\": \"<long>\",\n          \"nombre\": \"<string>\"\n        },\n        \"cantidad\": \"<integer>\",\n        \"precioUnitario\": \"<double>\",\n        \"subtotal\": \"<double>\"\n      }\n    ]\n  }\n]"
+						},
+						{
+							"name": "No se ha podido crear el pedido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"idCliente\": \"<long>\",\n  \"lineasPedido\": [\n    {\n      \"idProducto\": \"<long>\",\n      \"cantidad\": \"<integer>\"\n    },\n    {\n      \"idProducto\": \"<long>\",\n      \"cantidad\": \"<integer>\"\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pedido/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pedido",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cliente",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Encuentra un cliente por su id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cliente/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cliente",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "No se ha encontrado el cliente",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cliente/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cliente",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Se ha encontrado el cliente",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/cliente/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cliente",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"pin\": \"<integer>\",\n    \"pedidos\": [\n      {\n        \"id\": \"<long>\",\n        \"fecha\": \"<dateTime>\",\n        \"importe\": \"<double>\",\n        \"cantidadProductosDiferentes\": \"<integer>\",\n        \"cantidadProductos\": \"<integer>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"fecha\": \"<dateTime>\",\n        \"importe\": \"<double>\",\n        \"cantidadProductosDiferentes\": \"<integer>\",\n        \"cantidadProductos\": \"<integer>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"pin\": \"<integer>\",\n    \"pedidos\": [\n      {\n        \"id\": \"<long>\",\n        \"fecha\": \"<dateTime>\",\n        \"importe\": \"<double>\",\n        \"cantidadProductosDiferentes\": \"<integer>\",\n        \"cantidadProductos\": \"<integer>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"fecha\": \"<dateTime>\",\n        \"importe\": \"<double>\",\n        \"cantidadProductosDiferentes\": \"<integer>\",\n        \"cantidadProductos\": \"<integer>\"\n      }\n    ]\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Edita un cliente obteniendo su id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"email\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"pin\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cliente/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cliente",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "No se ha encontrado el cliente",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"email\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"pin\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/cliente/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cliente",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Se ha encontrado el cliente y se ha editado con éxito",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"email\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"pin\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/cliente/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cliente",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"pin\": \"<integer>\",\n    \"pedidos\": [\n      {\n        \"id\": \"<long>\",\n        \"fecha\": \"<dateTime>\",\n        \"importe\": \"<double>\",\n        \"cantidadProductosDiferentes\": \"<integer>\",\n        \"cantidadProductos\": \"<integer>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"fecha\": \"<dateTime>\",\n        \"importe\": \"<double>\",\n        \"cantidadProductosDiferentes\": \"<integer>\",\n        \"cantidadProductos\": \"<integer>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"pin\": \"<integer>\",\n    \"pedidos\": [\n      {\n        \"id\": \"<long>\",\n        \"fecha\": \"<dateTime>\",\n        \"importe\": \"<double>\",\n        \"cantidadProductosDiferentes\": \"<integer>\",\n        \"cantidadProductos\": \"<integer>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"fecha\": \"<dateTime>\",\n        \"importe\": \"<double>\",\n        \"cantidadProductosDiferentes\": \"<integer>\",\n        \"cantidadProductos\": \"<integer>\"\n      }\n    ]\n  }\n]"
+								}
+							]
+						},
+						{
+							"name": "Borra un cliente",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cliente/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cliente",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Se ha encontrado el cliente y se ha borrado con éxito,a demas de sus pedidos asociados",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cliente/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cliente",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "No se ha podido borrar el cliente",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cliente/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cliente",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todos los clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/cliente/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cliente",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Se han encontrado clientes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cliente/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cliente",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"pin\": \"<integer>\",\n    \"numeroPedidos\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"pin\": \"<integer>\",\n    \"numeroPedidos\": \"<integer>\"\n  }\n]"
+						},
+						{
+							"name": "No se ha encontrado ningún cliente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cliente/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cliente",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Agrega un cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"email\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"pin\": \"<integer>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cliente/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cliente",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "No se ha agregado ningún cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"email\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"pin\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cliente/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cliente",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Se ha agregado un cliente con éxito",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"<long>\",\n  \"nombre\": \"<string>\",\n  \"email\": \"<string>\",\n  \"telefono\": \"<string>\",\n  \"pin\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cliente/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cliente",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"pin\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"email\": \"<string>\",\n    \"telefono\": \"<string>\",\n    \"pin\": \"<integer>\"\n  }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "categoria",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Buscar una categoría por su id y número de productos que tiene",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/categoria/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Se ha encontrado la categoría",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/categoria/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categoria",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"numProductos\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\",\n    \"numProductos\": \"<integer>\"\n  }\n]"
+								},
+								{
+									"name": "No se ha encontrado ninguna categoría con ese id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/categoria/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categoria",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Edita una categoría",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categoria/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Se ha encontrado la categoría y se ha editado con éxito",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"nombre\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/categoria/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categoria",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  }\n]"
+								},
+								{
+									"name": "No se ha encontrado ninguna categoría con ese id",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"nombre\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/categoria/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categoria",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Borra una categoría",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/categoria/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<long>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Se ha encontrado la categoría y se ha borrado con éxito",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/categoria/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categoria",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Si hay productos asociados devolverá un mensaje indicándolo",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/categoria/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categoria",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[]"
+								},
+								{
+									"name": "Si la categoría no existe, también se indicará con un mensaje de error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/categoria/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"categoria",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista todas las categorías",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/categoria/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categoria",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Se han encontrado categorías",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/categoria/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  }\n]"
+						},
+						{
+							"name": "No se ha encontrado ninguna categoría",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/categoria/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Agrega una categoría",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"<string>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categoria/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categoria",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "No se ha agregado ninguna categoría",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categoria/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Se ha agregado una categoría con éxito",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/categoria/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"categoria",
+										""
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"nombre\": \"<string>\"\n  }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}
