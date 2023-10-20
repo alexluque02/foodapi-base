@@ -38,7 +38,7 @@ public class CategoriaController {
             @ApiResponse(responseCode = "201 Created",
                     description = "Se ha agregado una categoría con éxito",
                     content = { @Content(mediaType = "application/json",
-                            array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
+                            array = @ArraySchema(schema = @Schema(implementation = CategoriaDto.class)),
                             examples = {@ExampleObject(
                                     value = "{'id': 1, 'nombre': 'Veggie'}"
                             )}
@@ -64,7 +64,7 @@ public class CategoriaController {
             @ApiResponse(responseCode = "200",
                     description = "Se han encontrado categorías",
                     content = { @Content(mediaType = "application/json",
-                            array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
+                            array = @ArraySchema(schema = @Schema(implementation = CategoriaDto.class)),
                             examples = {@ExampleObject(
                                     value = """
                                                 [
@@ -99,7 +99,7 @@ public class CategoriaController {
             @ApiResponse(responseCode = "200",
                     description = "Se ha encontrado la categoría",
                     content = { @Content(mediaType = "application/json",
-                            array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
+                            array = @ArraySchema(schema = @Schema(implementation = CategoriaDetailsDto.class)),
                             examples = {@ExampleObject(
                                     value = " {'id': 1, 'nombre': 'Veggie', 'numProductos': 5}"
                             )}
@@ -122,7 +122,7 @@ public class CategoriaController {
             @ApiResponse(responseCode = "200",
                     description = "Se ha encontrado la categoría y se ha editado con éxito",
                     content = { @Content(mediaType = "application/json",
-                            array = @ArraySchema(schema = @Schema(implementation = Categoria.class)),
+                            array = @ArraySchema(schema = @Schema(implementation = CategoriaDto.class)),
                             examples = {@ExampleObject(
                                     value = " {'id': 1, 'nombre': 'Carne'}"
                             )}
@@ -148,7 +148,7 @@ public class CategoriaController {
             @ApiResponse(responseCode = "400 Bad Request",
                     description = "Si hay productos asociados devolverá un mensaje indicándolo",
                     content = {
-                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CategoriaServicio.class)), examples = {
                                     @ExampleObject(value = """
                                         {
                                               "error": "No se puede borrar una categoría que tenga productos asociados"
@@ -157,7 +157,7 @@ public class CategoriaController {
             @ApiResponse(responseCode = "404 Not Found",
                     description = "Si la categoría no existe, también se indicará con un mensaje de error",
                     content = {
-                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Categoria.class)), examples = {
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CategoriaServicio.class)), examples = {
                                     @ExampleObject(value = """
                                         {
                                               "not found": "No se ha encontrado la categoría"

@@ -37,7 +37,7 @@ public class ClienteController {
     @Operation(summary = "Agrega un cliente")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201 Created", description = "Se ha agregado un cliente con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ClienteDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 6,
@@ -64,7 +64,7 @@ public class ClienteController {
     @Operation(summary = "Lista todos los clientes")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se han encontrado clientes", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ClienteDto.class)), examples = {
                             @ExampleObject(value = """
                                         [
                                             {
@@ -122,7 +122,7 @@ public class ClienteController {
     @Operation(summary = "Encuentra un cliente por su id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha encontrado el cliente", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ClienteDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 2,
@@ -151,7 +151,7 @@ public class ClienteController {
     @Operation(summary = "Edita un cliente obteniendo su id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha encontrado el cliente y se ha editado con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ClienteDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 2,
@@ -179,26 +179,11 @@ public class ClienteController {
     @Operation(summary = "Borra un cliente")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204 No Content",
-                    description = "Se ha encontrado el cliente y se ha borrado con éxito",
+                    description = "Se ha encontrado el cliente y se ha borrado con éxito,a demas de sus pedidos asociados",
                     content = @Content),
             @ApiResponse(responseCode = "400 Bad Request",
-                    description = "Si hay pedidos asociados devolverá un mensaje indicándolo",
-                    content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
-                            @ExampleObject(value = """
-                                        {
-                                              "error": "No se puede borrar un cliente que tenga pedidos asociados"
-                                          }
-                                    """) }) }),
-            @ApiResponse(responseCode = "404 Not Found",
-                    description = "Si no encuentra el cliente nos devolverá un mensaje indicándolo",
-                    content = {
-                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Cliente.class)), examples = {
-                                    @ExampleObject(value = """
-                                        {
-                                              "not found": "No se ha encontrado el cliente"
-                                          }
-                                    """) }) })
+                    description = "No se ha podido borrar el cliente",
+                    content = @Content)
     })
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCliente(@PathVariable Long id) {
