@@ -1,7 +1,7 @@
 package com.salesianostriana.dam.foodapi.dto.producto;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.salesianostriana.dam.foodapi.dto.categoria.CategoriaDto;
-import com.salesianostriana.dam.foodapi.modelo.Categoria;
 import com.salesianostriana.dam.foodapi.modelo.Producto;
 
 import java.util.List;
