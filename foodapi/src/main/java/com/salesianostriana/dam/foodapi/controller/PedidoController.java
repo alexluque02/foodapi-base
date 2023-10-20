@@ -36,7 +36,7 @@ public class PedidoController {
     @Operation(summary = "Agrega un pedido")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201 Created", description = "Se ha creado el pedido con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PedidoDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 4,
@@ -85,7 +85,7 @@ public class PedidoController {
     @Operation(summary = "Lista todos los pedidos")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se han encontrado pedidos", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PedidoDto.class)), examples = {
                             @ExampleObject(value = """
                                     [
                                           {
@@ -155,7 +155,7 @@ public class PedidoController {
     @Operation(summary = "Busca un pedido por su id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se han encontrado el pedido", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PedidoDetailsDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 3,
@@ -196,7 +196,7 @@ public class PedidoController {
     @Operation(summary = "Elimina una línea de pedido del pedido")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha eliminado la línea de pedido", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PedidoDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                          "id": 2,
@@ -237,7 +237,7 @@ public class PedidoController {
     @Operation(summary = "Modifica la cantidad de productos comprados en una línea de pedido")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha modificado la cantidad con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PedidoDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 2,
@@ -281,7 +281,7 @@ public class PedidoController {
     @Operation(summary = "Añade una línea de pedido nueva a un pedido")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha agregado con éxito la línea de pedido", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Pedido.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = PedidoDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 1,

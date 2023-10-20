@@ -39,7 +39,7 @@ public class ProductoController {
     @Operation(summary = "Agrega un producto")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201 Created", description = "Se ha agregado un producto con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ProductoDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 9,
@@ -70,7 +70,7 @@ public class ProductoController {
     @Operation(summary = "Buscar un producto por su id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha encontrado el producto", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = FindProductoDto.class)), examples = {
                             @ExampleObject(value = """
                                     {
                                         "id": 2,
@@ -102,7 +102,7 @@ public class ProductoController {
     @Operation(summary = "Lista todos los productos")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se han encontrado productos", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ProductoDto.class)), examples = {
                             @ExampleObject(value = """
                                         [
                                             {
@@ -169,7 +169,7 @@ public class ProductoController {
     @Operation(summary = "Editar producto")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200 OK", description = "Se ha editado con éxito", content = {
-                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Producto.class)), examples = {
+                    @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = FindProductoDto.class)), examples = {
                             @ExampleObject(value = """
                                         {
                                             "id": 1,
